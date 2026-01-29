@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: MIT
+define KFEATURE_DESCRIPTION "Enable Hibernation (aka 'suspend to disk')"
+define KFEATURE_COMPATIBILITY board
+
+kconf non-hardware hibernation.cfg

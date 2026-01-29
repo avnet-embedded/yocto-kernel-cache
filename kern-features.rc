@@ -157,11 +157,12 @@
 	config = features/systemtap/systemtap.scc
 	config = features/intel-pmc/intel-pmc-core.scc
 	config = features/tsn/tsn.scc
-	config = features/power/bq25890.scc
-	config = features/power/intel.scc
-	config = features/power/cpu_freq_stat.scc
-	config = features/power/intel_pmic.scc
 	config = features/power/arm.scc
+	config = features/power/bq25890.scc
+	config = features/power/cpu_freq_stat.scc
+	config = features/power/hibernation.scc
+	config = features/power/intel.scc
+	config = features/power/intel_pmic.scc
 	config = features/bluetooth/bluetooth-hw.scc
 	config = features/bluetooth/bluetooth-usb.scc
 	config = features/bluetooth/bluetooth-vhci.scc
