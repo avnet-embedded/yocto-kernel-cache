@@ -53,7 +53,6 @@ include features/nfc/nfc-generic.scc
 include features/nfc/nfc-vendor.scc
 include features/numa/numa.scc
 include features/nvme/nvme.scc
-include features/optee/optee.cfg
 include features/pci-iov/pci-iov.scc
 include features/pci/pci.scc
 include features/power/arm.scc
