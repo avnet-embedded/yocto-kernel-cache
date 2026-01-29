@@ -62,6 +62,7 @@ include features/rpmb/rpmb-base.scc
 include features/rfkill/rfkill-extra.scc
 include features/sched/sched-desktop.scc
 include features/scsi/ufs.scc
+include features/transparent-hugepage/transparent-hugepage.scc
 include features/usb-net/usb-net.scc
 include features/usb/ehci-hcd.scc
 include features/usb/ohci-hcd.scc
