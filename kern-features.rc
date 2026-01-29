@@ -302,6 +302,7 @@
 	config = features/ciphers/ciphers.scc
 	config = features/x2apic/x2apic.scc
 	config = features/uio/uio.scc
+	config = features/gnss/gnss.scc
 	config = bsp/xilinx/board-common.scc
 	config = bsp/xilinx/kc705-microblazeel-features/kc705-microblazeel-features.scc
 	config = bsp/xilinx/soc/zynq.scc
