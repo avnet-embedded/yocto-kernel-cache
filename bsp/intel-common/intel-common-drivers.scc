@@ -13,7 +13,7 @@ kconf hardware bsp/common-pc/common-pc-gfx.cfg
 kconf hardware bsp/common-pc/common-pc-wifi.cfg
 
 # OSS sound support
-include cfg/sound.scc
+include cfg/sound_x86.scc
 
 # PCI
 include features/pci/pci.scc

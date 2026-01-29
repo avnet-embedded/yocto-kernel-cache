@@ -1,6 +1,7 @@
 [kernel-options]
 	config = cfg/crypto-obsolete-disable.scc
 	config = cfg/sound.scc
+	config = cfg/sound_x86.scc
 	config = cfg/vmware-guest.scc
 	config = cfg/fs/btrfs.scc
 	config = cfg/fs/ext3.scc
