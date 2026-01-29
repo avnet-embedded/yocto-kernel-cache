@@ -47,6 +47,9 @@ include features/net/hsr.scc
 include features/net/mellanox/mellanox.scc
 include features/net/net.scc
 include features/netfilter/netfilter.scc
+include features/nfc/nfc.scc
+include features/nfc/nfc-generic.scc
+include features/nfc/nfc-vendor.scc
 include features/numa/numa.scc
 include features/nvme/nvme.scc
 include features/optee/optee.cfg
