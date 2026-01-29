@@ -216,6 +216,7 @@
 	config = features/sram/sram.scc
 	config = features/iwlwifi/iwlwifi.scc
 	config = features/intel-npu/intel-npu.scc
+	config = features/net/hsr.scc
 	config = features/net/mellanox/mellanox.scc
 	config = features/spi/spi.scc
 	config = features/spi/spidev.scc
