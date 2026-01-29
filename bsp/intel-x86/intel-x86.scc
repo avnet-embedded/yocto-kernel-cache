@@ -14,6 +14,7 @@ include features/netfilter/netfilter.scc
 include features/profiling/profiling.scc
 include features/hugetlb/hugetlb.scc
 include features/power/intel.scc
+include features/power/hibernation.scc
 include features/scsi/cdrom.scc
 include features/i915/i915.scc
 include features/xe/xe.scc
