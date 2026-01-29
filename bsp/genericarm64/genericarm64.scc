@@ -43,11 +43,12 @@ include features/memory/failure.scc
 include features/mmc/mmc-block.scc
 include features/mmc/mmc-sdhci.scc
 include features/mtd/mtd.scc
+include features/net/hsr.scc
 include features/net/mellanox/mellanox.scc
-include features/nvme/nvme.scc
 include features/net/net.scc
 include features/netfilter/netfilter.scc
 include features/numa/numa.scc
+include features/nvme/nvme.scc
 include features/optee/optee.cfg
 include features/pci-iov/pci-iov.scc
 include features/pci/pci.scc
