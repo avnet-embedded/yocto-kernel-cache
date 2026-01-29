@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: MIT
+define KFEATURE_DESCRIPTION "OSS sound support on x86"
+define KFEATURE_COMPATIBILITY board
+
+include sound.scc
+kconf non-hardware sound_x86.cfg
