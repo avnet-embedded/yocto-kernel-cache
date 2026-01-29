@@ -5,3 +5,6 @@ define KFEATURE_COMPATIBILITY board
 include nfc-generic.scc
 
 kconf hardware nfc-vendor.cfg
+if [ "$KARCH" = "x86_64" ] || [ "$KARCH" = "i386" ]; then
+    kconf hardware nfc-vendor-intel.cfg
+fi
