@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: MIT
+kconf hardware microchip-pic64gx.cfg
+
+include cfg/usb-mass-storage.scc
+include cfg/fs/flash_fs.scc
+include cfg/timer/rtc.scc
+include features/usb/usb-base.scc
+include features/spi/spidev.scc
+include features/usb/xhci-hcd.scc
+include features/usb/ohci-hcd.scc
+include features/power/cpu_freq_stat.scc
+include features/pwm/pwm.scc
+include features/pci/pci-of-generic.scc
