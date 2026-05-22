@@ -3,6 +3,7 @@ define KFEATURE_DESCRIPTION "Memory error detection support, e.g. ECC RAM"
 define KFEATURE_COMPATIBILITY all
 
 include features/edac/edac.cfg
+include features/apei/apei.cfg
 
 kconf non-hardware failure.cfg
 
