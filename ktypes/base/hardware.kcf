@@ -252,8 +252,8 @@ drivers/char/xillybus/Kconfig
 drivers/clk/actions/Kconfig
 drivers/clk/analogbits/Kconfig
 drivers/clk/aspeed/Kconfig
-drivers/clk/baikal-t1/Kconfig
 drivers/clk/bcm/Kconfig
+drivers/clk/eswin/Kconfig
 drivers/clk/hisilicon/Kconfig
 drivers/clk/imgtec/Kconfig
 drivers/clk/imx/Kconfig
@@ -283,6 +283,7 @@ drivers/clk/stm32/Kconfig
 drivers/clk/sunxi/Kconfig
 drivers/clk/sunxi-ng/Kconfig
 drivers/clk/tegra/Kconfig
+drivers/clk/tenstorrent/Kconfig
 drivers/clk/thead/Kconfig
 drivers/clk/ti/Kconfig
 drivers/clk/uniphier/Kconfig
@@ -343,6 +344,7 @@ drivers/dma/fsl-dpaa2-qdma/Kconfig
 drivers/dma/hsu/Kconfig
 drivers/dma/Kconfig
 drivers/dma/lgm/Kconfig
+drivers/dma/loongson/Kconfig
 drivers/dma/mediatek/Kconfig
 drivers/dma/qcom/Kconfig
 drivers/dma/sf-pdma/Kconfig
@@ -461,6 +463,7 @@ drivers/gpu/drm/udl/Kconfig
 drivers/gpu/drm/v3d/Kconfig
 drivers/gpu/drm/vboxvideo/Kconfig
 drivers/gpu/drm/vc4/Kconfig
+drivers/gpu/drm/verisilicon/Kconfig
 drivers/gpu/drm/vgem/Kconfig
 drivers/gpu/drm/virtio/Kconfig
 drivers/gpu/drm/vkms/Kconfig
@@ -472,6 +475,7 @@ drivers/gpu/drm/xen/Kconfig
 drivers/gpu/drm/xlnx/Kconfig
 drivers/gpu/host1x/Kconfig
 drivers/gpu/ipu-v3/Kconfig
+drivers/gpu/Kconfig
 drivers/gpu/nova-core/Kconfig
 drivers/gpu/trace/Kconfig
 drivers/gpu/vga/Kconfig
@@ -578,7 +582,6 @@ drivers/infiniband/sw/siw/Kconfig
 drivers/infiniband/ulp/ipoib/Kconfig
 drivers/infiniband/ulp/iser/Kconfig
 drivers/infiniband/ulp/isert/Kconfig
-drivers/infiniband/ulp/opa_vnic/Kconfig
 drivers/infiniband/ulp/rtrs/Kconfig
 drivers/infiniband/ulp/srp/Kconfig
 drivers/infiniband/ulp/srpt/Kconfig
@@ -609,10 +612,6 @@ drivers/ipack/carriers/Kconfig
 drivers/ipack/devices/Kconfig
 drivers/ipack/Kconfig
 drivers/irqchip/Kconfig
-drivers/isdn/capi/Kconfig
-drivers/isdn/hardware/mISDN/Kconfig
-drivers/isdn/Kconfig
-drivers/isdn/mISDN/Kconfig
 drivers/Kconfig
 drivers/leds/blink/Kconfig
 drivers/leds/flash/Kconfig
@@ -861,7 +860,6 @@ drivers/mtd/spi-nor/Kconfig
 drivers/mtd/ubi/Kconfig
 drivers/mux/Kconfig
 drivers/net/arcnet/Kconfig
-drivers/net/caif/Kconfig
 drivers/net/can/cc770/Kconfig
 drivers/net/can/c_can/Kconfig
 drivers/net/can/ctucanfd/Kconfig
@@ -900,7 +898,6 @@ drivers/net/ethernet/agere/Kconfig
 drivers/net/ethernet/airoha/Kconfig
 drivers/net/ethernet/alacritech/Kconfig
 drivers/net/ethernet/allwinner/Kconfig
-drivers/net/ethernet/alteon/Kconfig
 drivers/net/ethernet/altera/Kconfig
 drivers/net/ethernet/amazon/Kconfig
 drivers/net/ethernet/amd/Kconfig
@@ -939,7 +936,6 @@ drivers/net/ethernet/freescale/enetc/Kconfig
 drivers/net/ethernet/freescale/fman/Kconfig
 drivers/net/ethernet/freescale/fs_enet/Kconfig
 drivers/net/ethernet/freescale/Kconfig
-drivers/net/ethernet/fujitsu/Kconfig
 drivers/net/ethernet/fungible/funeth/Kconfig
 drivers/net/ethernet/fungible/Kconfig
 drivers/net/ethernet/google/Kconfig
@@ -988,7 +984,6 @@ drivers/net/ethernet/nvidia/Kconfig
 drivers/net/ethernet/nxp/Kconfig
 drivers/net/ethernet/oki-semi/Kconfig
 drivers/net/ethernet/oki-semi/pch_gbe/Kconfig
-drivers/net/ethernet/packetengines/Kconfig
 drivers/net/ethernet/pasemi/Kconfig
 drivers/net/ethernet/pensando/Kconfig
 drivers/net/ethernet/qlogic/Kconfig
@@ -1026,7 +1021,6 @@ drivers/net/ethernet/xilinx/Kconfig
 drivers/net/ethernet/xircom/Kconfig
 drivers/net/ethernet/xscale/Kconfig
 drivers/net/fddi/Kconfig
-drivers/net/hamradio/Kconfig
 drivers/net/hyperv/Kconfig
 drivers/net/ieee802154/Kconfig
 drivers/net/ipa/Kconfig
@@ -1170,6 +1164,8 @@ drivers/phy/amlogic/Kconfig
 drivers/phy/apple/Kconfig
 drivers/phy/broadcom/Kconfig
 drivers/phy/cadence/Kconfig
+drivers/phy/canaan/Kconfig
+drivers/phy/eswin/Kconfig
 drivers/phy/freescale/Kconfig
 drivers/phy/hisilicon/Kconfig
 drivers/phy/ingenic/Kconfig
@@ -1419,8 +1415,6 @@ drivers/staging/media/ipu7/Kconfig
 drivers/staging/media/Kconfig
 drivers/staging/media/max96712/Kconfig
 drivers/staging/media/meson/vdec/Kconfig
-drivers/staging/media/starfive/camss/Kconfig
-drivers/staging/media/starfive/Kconfig
 drivers/staging/media/sunxi/cedrus/Kconfig
 drivers/staging/media/sunxi/Kconfig
 drivers/staging/media/sunxi/sun6i-isp/Kconfig
@@ -1511,6 +1505,7 @@ drivers/vfio/fsl-mc/Kconfig
 drivers/vfio/Kconfig
 drivers/vfio/mdev/Kconfig
 drivers/vfio/pci/hisilicon/Kconfig
+drivers/vfio/pci/ism/Kconfig
 drivers/vfio/pci/Kconfig
 drivers/vfio/pci/mlx5/Kconfig
 drivers/vfio/pci/nvgrace-gpu/Kconfig
@@ -1560,11 +1555,9 @@ mm/Kconfig
 mm/Kconfig.debug
 net/atm/Kconfig
 net/bluetooth/bnep/Kconfig
-net/bluetooth/cmtp/Kconfig
 net/bluetooth/hidp/Kconfig
 net/bluetooth/Kconfig
 net/bluetooth/rfcomm/Kconfig
-net/caif/Kconfig
 net/can/j1939/Kconfig
 net/can/Kconfig
 net/ieee802154/6lowpan/Kconfig

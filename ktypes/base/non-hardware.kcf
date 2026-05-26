@@ -104,8 +104,6 @@ drivers/staging/media/ipu7/Kconfig
 drivers/staging/media/Kconfig
 drivers/staging/media/max96712/Kconfig
 drivers/staging/media/meson/vdec/Kconfig
-drivers/staging/media/starfive/camss/Kconfig
-drivers/staging/media/starfive/Kconfig
 drivers/staging/media/sunxi/cedrus/Kconfig
 drivers/staging/media/sunxi/Kconfig
 drivers/staging/media/sunxi/sun6i-isp/Kconfig
@@ -139,6 +137,7 @@ drivers/vfio/fsl-mc/Kconfig
 drivers/vfio/Kconfig
 drivers/vfio/mdev/Kconfig
 drivers/vfio/pci/hisilicon/Kconfig
+drivers/vfio/pci/ism/Kconfig
 drivers/vfio/pci/Kconfig
 drivers/vfio/pci/mlx5/Kconfig
 drivers/vfio/pci/nvgrace-gpu/Kconfig
@@ -210,6 +209,7 @@ fs/notify/fanotify/Kconfig
 fs/notify/inotify/Kconfig
 fs/notify/Kconfig
 fs/ntfs3/Kconfig
+fs/ntfs/Kconfig
 fs/ocfs2/Kconfig
 fs/omfs/Kconfig
 fs/orangefs/Kconfig
@@ -224,6 +224,7 @@ fs/romfs/Kconfig
 fs/smb/client/Kconfig
 fs/smb/Kconfig
 fs/smb/server/Kconfig
+fs/smb/smbdirect/Kconfig
 fs/squashfs/Kconfig
 fs/sysfs/Kconfig
 fs/ubifs/Kconfig
@@ -255,6 +256,8 @@ kernel/rcu/Kconfig.debug
 kernel/time/Kconfig
 kernel/trace/Kconfig
 kernel/trace/rv/Kconfig
+kernel/trace/rv/monitors/deadline/Kconfig
+kernel/trace/rv/monitors/nomiss/Kconfig
 kernel/trace/rv/monitors/nrp/Kconfig
 kernel/trace/rv/monitors/opid/Kconfig
 kernel/trace/rv/monitors/pagefault/Kconfig
@@ -266,6 +269,7 @@ kernel/trace/rv/monitors/sleep/Kconfig
 kernel/trace/rv/monitors/snep/Kconfig
 kernel/trace/rv/monitors/snroc/Kconfig
 kernel/trace/rv/monitors/sssw/Kconfig
+kernel/trace/rv/monitors/stall/Kconfig
 kernel/trace/rv/monitors/sts/Kconfig
 kernel/trace/rv/monitors/wip/Kconfig
 kernel/trace/rv/monitors/wwnr/Kconfig
@@ -283,6 +287,7 @@ lib/Kconfig.kmsan
 lib/Kconfig.ubsan
 lib/kunit/Kconfig
 lib/math/Kconfig
+lib/raid/Kconfig
 lib/vdso/Kconfig
 lib/xz/Kconfig
 net/6lowpan/Kconfig
@@ -291,16 +296,13 @@ net/802/Kconfig
 net/9p/Kconfig
 net/appletalk/Kconfig
 net/atm/Kconfig
-net/ax25/Kconfig
 net/batman-adv/Kconfig
 net/bluetooth/bnep/Kconfig
-net/bluetooth/cmtp/Kconfig
 net/bluetooth/hidp/Kconfig
 net/bluetooth/Kconfig
 net/bluetooth/rfcomm/Kconfig
 net/bridge/Kconfig
 net/bridge/netfilter/Kconfig
-net/caif/Kconfig
 net/can/j1939/Kconfig
 net/can/Kconfig
 net/ceph/Kconfig
