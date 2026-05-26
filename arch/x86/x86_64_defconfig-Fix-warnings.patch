@@ -1,4 +1,4 @@
-From 27c4a89363762e2601b1cf9b241c81df7168ca83 Mon Sep 17 00:00:00 2001
+From b5667ee1e2e5ac0ebd35e848bf47afd4862df043 Mon Sep 17 00:00:00 2001
 From: Naveen Saini <naveen.kumar.saini@intel.com>
 Date: Fri, 21 Jan 2022 16:46:21 +0800
 Subject: [PATCH] x86_64_defconfig: Fix warnings
@@ -14,24 +14,6 @@ Added dependency configurations:
  CONFIG_IOMMU_SUPPORT for CONFIG_AMD_IOOMU & CONFIG_INTEL_IOMMU
  CONFIG_NET_VENDOR_NVIDIA for CONFIG_FORCEDETH
 
-        Config 'LOGITECH_FF' has the following Direct dependencies (LOGITECH_FF=n):
-                HID_LOGITECH(=n) && HID(=y) && INPUT(=y)
-        Parent dependencies are:
-             HID_LOGITECH [n] HID [y] INPUT [y]
-    [INFO]: config 'CONFIG_LOGITECH_FF' was set, but it wasn't assignable, check (parent) dependencies
-
-        Config 'NET_TULIP' has the following Direct dependencies (NET_TULIP=n):
-                PCI(=y) || EISA(=n) || CARDBUS(=y) (=y) && NET_VENDOR_DEC(=n) && ETHERNET(=y) && NETDEVICES(=y)
-        Parent dependencies are:
-             NET_VENDOR_DEC [n] ETHERNET [y] EISA [n] PCI [y] CARDBUS [y] NETDEVICES [y]
-    [INFO]: config 'CONFIG_NET_TULIP' was set, but it wasn't assignable, check (parent) dependencies
-
-        Config 'FORCEDETH' has the following Direct dependencies (FORCEDETH=n):
-                PCI(=y) && NET_VENDOR_NVIDIA(=n) && ETHERNET(=y) && NETDEVICES(=y)
-        Parent dependencies are:
-             NETDEVICES [y] PCI [y] NET_VENDOR_NVIDIA [n] ETHERNET [y]
-    [INFO]: config 'CONFIG_FORCEDETH' was set, but it wasn't assignable, check (parent) dependencies
-
 Tested with qemux86-64 machine:
 $ oe-selftest --run-tests kerneldevelopment.KernelConfigs
 
@@ -39,12 +21,13 @@ Disabled debug configurations. Yocto-kernel-cahce have seperate debug configurat
 
 Signed-off-by: Naveen Saini <naveen.kumar.saini@intel.com>
 Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
+[bruce: refreshed for v7.1; upstream added CONFIG_RTC_HCTOSYS and CONFIG_IRQ_REMAP lines]
 ---
  arch/x86/configs/x86_64_defconfig | 12 ++++++++----
  1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/arch/x86/configs/x86_64_defconfig b/arch/x86/configs/x86_64_defconfig
-index 7d7310cdf8b0a..ce85c2871f9f5 100644
+index 269f7d808be4..b034d7f00ad5 100644
 --- a/arch/x86/configs/x86_64_defconfig
 +++ b/arch/x86/configs/x86_64_defconfig
 @@ -128,7 +128,7 @@ CONFIG_PCCARD=y
@@ -94,10 +77,10 @@ index 7d7310cdf8b0a..ce85c2871f9f5 100644
  CONFIG_INTEL_IOMMU=y
  # CONFIG_INTEL_IOMMU_DEFAULT_ON is not set
 +CONFIG_IOMMU_SUPPORT=y
+ CONFIG_IRQ_REMAP=y
  CONFIG_EXT4_FS=y
  CONFIG_EXT4_FS_POSIX_ACL=y
- CONFIG_EXT4_FS_SECURITY=y
-@@ -268,5 +272,5 @@ CONFIG_SCHEDSTATS=y
+@@ -269,5 +273,5 @@ CONFIG_SCHEDSTATS=y
  CONFIG_BLK_DEV_IO_TRACE=y
  CONFIG_PROVIDE_OHCI1394_DMA_INIT=y
  CONFIG_EARLY_PRINTK_DBGP=y
@@ -105,5 +88,5 @@ index 7d7310cdf8b0a..ce85c2871f9f5 100644
 +CONFIG_DEBUG_BOOT_PARAMS=n
  CONFIG_DEBUG_ENTRY=y
 -- 
-2.39.2
+2.43.0
 
