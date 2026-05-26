@@ -1,8 +1,8 @@
-From 3c4444a6a3599660bcc24c9df5b2eb7fd36914e7 Mon Sep 17 00:00:00 2001
+From 81550d1f676f129ad787b06f8f07d3953ebabc22 Mon Sep 17 00:00:00 2001
 From: Catalin Marinas <catalin.marinas@arm.com>
 Date: Thu, 23 Feb 2012 17:16:41 +0000
-Subject: [PATCH 12/12] ARM: LPAE: Invalidate the TLB for module addresses
- during translation fault
+Subject: [PATCH] ARM: LPAE: Invalidate the TLB for module addresses during
+ translation fault
 
 commit cf9b5a26876adb266aa1ba8a0b08669389a2e301 in repository:
   git://git.kernel.org/pub/scm/linux/kernel/git/maz/arm-platforms.git
@@ -38,18 +38,20 @@ doesn't occur.
 Reported-by: Tony Thompson <Anthony.Thompson@arm.com>
 Signed-off-by: Catalin Marinas <catalin.marinas@arm.com>
 Signed-off-by: Paul Gortmaker <paul.gortmaker@windriver.com>
+[bruce: refreshed for v7.1; pud/pmd walk moved from do_translation_fault() to new vmalloc_fault() helper (upstream 789002048517)]
+Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
 ---
- arch/arm/mm/fault.c |   13 +++++++++++--
- 1 files changed, 11 insertions(+), 2 deletions(-)
+ arch/arm/mm/fault.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
 diff --git a/arch/arm/mm/fault.c b/arch/arm/mm/fault.c
-index 5bb4835..2c07452 100644
+index e62cc4be5adf..251bb243382f 100644
 --- a/arch/arm/mm/fault.c
 +++ b/arch/arm/mm/fault.c
-@@ -448,8 +448,16 @@ do_translation_fault(unsigned long addr, unsigned int fsr,
+@@ -269,8 +269,16 @@ static bool __kprobes __maybe_unused vmalloc_fault(unsigned long addr)
  
  	if (pud_none(*pud_k))
- 		goto bad_area;
+ 		return false;
 -	if (!pud_present(*pud))
 +	if (!pud_present(*pud)) {
  		set_pud(pud, *pud_k);
@@ -64,17 +66,17 @@ index 5bb4835..2c07452 100644
  
  	pmd = pmd_offset(pud, addr);
  	pmd_k = pmd_offset(pud_k, addr);
-@@ -472,8 +480,9 @@ do_translation_fault(unsigned long addr, unsigned int fsr,
+@@ -293,8 +301,8 @@ static bool __kprobes __maybe_unused vmalloc_fault(unsigned long addr)
  #endif
  	if (pmd_none(pmd_k[index]))
- 		goto bad_area;
+ 		return false;
+-
+-	copy_pmd(pmd, pmd_k);
 +	if (!pmd_present(pmd[index]))
 +		copy_pmd(pmd, pmd_k);
  
--	copy_pmd(pmd, pmd_k);
- 	return 0;
- 
- bad_area:
+ 	return true;
+ }
 -- 
-1.7.9.1
+2.43.0
 
