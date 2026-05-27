@@ -1,4 +1,4 @@
-From 81550d1f676f129ad787b06f8f07d3953ebabc22 Mon Sep 17 00:00:00 2001
+From 9e0734ffc66f8f65f33ebaedb8944d73b9079aa3 Mon Sep 17 00:00:00 2001
 From: Catalin Marinas <catalin.marinas@arm.com>
 Date: Thu, 23 Feb 2012 17:16:41 +0000
 Subject: [PATCH] ARM: LPAE: Invalidate the TLB for module addresses during

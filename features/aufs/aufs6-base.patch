@@ -1,4 +1,4 @@
-From f99f3f98eb336e35db95f45c7060675cc2b2389b Mon Sep 17 00:00:00 2001
+From 186c0cef62e92dbb598ae98e16d6ac2b90bccdd0 Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@gmail.com>
 Date: Sun, 25 Jan 2026 16:28:58 -0500
 Subject: [PATCH] aufs6: base
@@ -19,10 +19,10 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
  11 files changed, 59 insertions(+), 4 deletions(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 96ea84948d76..5b3c95906a27 100644
+index b539be153f6a..421b1195c91e 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -4236,6 +4236,19 @@ S:	Supported
+@@ -4259,6 +4259,19 @@ S:	Supported
  F:	Documentation/dev-tools/autofdo.rst
  F:	scripts/Makefile.autofdo
  
@@ -74,10 +74,10 @@ index 0000913f7efc..e7dadac7dd17 100644
  
  static ssize_t loop_attr_show(struct device *dev, char *page,
 diff --git a/fs/dcache.c b/fs/dcache.c
-index 7ba1801d8132..2007442315ec 100644
+index 2c61aeea41f4..d1e354fb80ea 100644
 --- a/fs/dcache.c
 +++ b/fs/dcache.c
-@@ -1311,6 +1311,9 @@ enum d_walk_ret {
+@@ -1359,6 +1359,9 @@ enum d_walk_ret {
  	D_WALK_SKIP,
  };
  
@@ -87,7 +87,7 @@ index 7ba1801d8132..2007442315ec 100644
  /**
   * d_walk - walk the dentry tree
   * @parent:	start of walk
-@@ -1319,7 +1322,7 @@ enum d_walk_ret {
+@@ -1367,7 +1370,7 @@ enum d_walk_ret {
   *
   * The @enter() callbacks are called with d_lock held.
   */
@@ -119,7 +119,7 @@ index beab8080badf..c9e5300ff82b 100644
  		return error;
  
 diff --git a/fs/namespace.c b/fs/namespace.c
-index 854f4fc66469..60e48ee64b69 100644
+index fe919abd2f01..da4ef4cda146 100644
 --- a/fs/namespace.c
 +++ b/fs/namespace.c
 @@ -948,6 +948,12 @@ static inline int check_mnt(const struct mount *mnt)
@@ -149,10 +149,10 @@ index 9d8f63e2fd1a..d2b70cb432d1 100644
  {
  	if (unlikely(!out->f_op->splice_write))
 diff --git a/include/linux/fs.h b/include/linux/fs.h
-index 8b3dd145b25e..53a16e37ccba 100644
+index 11559c513dfb..391dfb0ca771 100644
 --- a/include/linux/fs.h
 +++ b/include/linux/fs.h
-@@ -1389,6 +1389,7 @@ extern void fasync_free(struct fasync_struct *);
+@@ -1390,6 +1390,7 @@ extern void fasync_free(struct fasync_struct *);
  /* can be called from interrupts */
  extern void kill_fasync(struct fasync_struct **, int, int);
  

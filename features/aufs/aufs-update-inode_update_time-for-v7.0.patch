@@ -1,4 +1,4 @@
-From 4a76475781d5ed904d3142a4f599f239065fdff5 Mon Sep 17 00:00:00 2001
+From 348951041ceb0fe4550255e7cf03bf2339d23ea8 Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@gmail.com>
 Date: Wed, 18 Mar 2026 10:05:23 -0400
 Subject: [PATCH] fs/aufs: adapt to v7.0 inode_update_time API change

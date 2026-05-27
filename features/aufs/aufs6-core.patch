@@ -1,4 +1,4 @@
-From 56ffba629f06f6f26adb9d08e466af9f9dd75e0b Mon Sep 17 00:00:00 2001
+From a0daaa858ddd0efb2916d5c37c344fd48ae6326f Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@gmail.com>
 Date: Sun, 25 Jan 2026 16:31:06 -0500
 Subject: [PATCH] aufs6: core

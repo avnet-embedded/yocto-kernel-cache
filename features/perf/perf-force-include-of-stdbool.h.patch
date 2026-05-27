@@ -1,4 +1,4 @@
-From 2a1ee7ba1254b10638e1973a169992c4bb5ff37b Mon Sep 17 00:00:00 2001
+From 7b6e058e41dfd147b1162a694b0e3ec46f7d012b Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@windriver.com>
 Date: Thu, 19 Aug 2010 11:24:45 -0400
 Subject: [PATCH] perf: force include of <stdbool.h>
@@ -13,7 +13,7 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@windriver.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/tools/perf/perf.h b/tools/perf/perf.h
-index e004178472d9e..00ae0f27bd1e2 100644
+index e004178472d9..00ae0f27bd1e 100644
 --- a/tools/perf/perf.h
 +++ b/tools/perf/perf.h
 @@ -1,5 +1,7 @@
@@ -25,5 +25,5 @@ index e004178472d9e..00ae0f27bd1e2 100644
  
  #define MAX_NR_CPUS			4096
 -- 
-2.39.2
+2.43.0
 

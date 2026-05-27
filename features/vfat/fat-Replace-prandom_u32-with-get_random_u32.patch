@@ -1,4 +1,4 @@
-From 7e7ea83a87c4bfd60707d318970e7a4005afa51f Mon Sep 17 00:00:00 2001
+From aec63df667999599cdd97af2c45f0d0073a1e092 Mon Sep 17 00:00:00 2001
 From: Kevin Hao <kexin.hao@windriver.com>
 Date: Fri, 7 Apr 2023 21:03:41 +0800
 Subject: [PATCH] fat: Replace prandom_u32() with get_random_u32()
@@ -14,10 +14,10 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/fs/fat/namei_vfat.c b/fs/fat/namei_vfat.c
-index 12274287096da..2c6b952d2e6aa 100644
+index 6029b9ffe388..d029c8166297 100644
 --- a/fs/fat/namei_vfat.c
 +++ b/fs/fat/namei_vfat.c
-@@ -613,7 +613,7 @@ static void vfat_build_dummy_83_buffer(struct inode *dir, char *msdos_name,
+@@ -614,7 +614,7 @@ static void vfat_build_dummy_83_buffer(struct inode *dir, char *msdos_name,
  				     0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x22, 0x2a,
  				     0x3a, 0x3c, 0x3e, 0x3f, 0x5b, 0x5d, 0x7c };
  	int i, tilde_pos, slash_pos;
@@ -26,7 +26,7 @@ index 12274287096da..2c6b952d2e6aa 100644
  
  	/* We need a '~' in the prefix to make Win98 happy. */
  	tilde_pos = rand_num % 8;
-@@ -648,7 +648,7 @@ static void vfat_build_dummy_83_buffer(struct inode *dir, char *msdos_name,
+@@ -649,7 +649,7 @@ static void vfat_build_dummy_83_buffer(struct inode *dir, char *msdos_name,
  				invalidchar[rand_num % sizeof(invalidchar)];
  			rand_num /= sizeof(invalidchar);
  			if (rand_num < sizeof(invalidchar))
@@ -36,5 +36,5 @@ index 12274287096da..2c6b952d2e6aa 100644
  	}
  }
 -- 
-2.39.2
+2.43.0
 

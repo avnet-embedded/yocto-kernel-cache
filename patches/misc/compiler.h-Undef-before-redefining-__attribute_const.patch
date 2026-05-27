@@ -1,4 +1,4 @@
-From 62a9e040c5fc853a108f536e071a8bd19a4f9ce7 Mon Sep 17 00:00:00 2001
+From aa6114b9e1862e398bdaf41f6db77a2f4f25be6d Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Thu, 5 Jan 2012 11:42:35 -0800
 Subject: [PATCH] compiler.h: Undef before redefining __attribute_const__
@@ -12,7 +12,7 @@ Signed-off-by: Khem Raj <raj.khem@gmail.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/tools/include/linux/compiler.h b/tools/include/linux/compiler.h
-index f40bd2b04c298..c407f230cb953 100644
+index f40bd2b04c29..c407f230cb95 100644
 --- a/tools/include/linux/compiler.h
 +++ b/tools/include/linux/compiler.h
 @@ -114,6 +114,7 @@
@@ -24,5 +24,5 @@ index f40bd2b04c298..c407f230cb953 100644
  #define __rcu
  #define __read_mostly
 -- 
-2.39.2
+2.43.0
 

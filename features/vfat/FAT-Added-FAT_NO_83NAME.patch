@@ -1,4 +1,4 @@
-From 9e6997e6e5768723bc14c95ce0b006bef4506d03 Mon Sep 17 00:00:00 2001
+From b81d9e152f3404ddfceb171289a4fc820fa95e4a Mon Sep 17 00:00:00 2001
 From: Andrew Tridgell <tridge@samba.org>
 Date: Thu, 16 Jul 2009 12:47:15 +1000
 Subject: [PATCH] FAT: Added FAT_NO_83NAME
@@ -16,10 +16,10 @@ Signed-off-by: Andrew Tridgell <tridge@samba.org>
  2 files changed, 17 insertions(+), 1 deletion(-)
 
 diff --git a/fs/fat/dir.c b/fs/fat/dir.c
-index 92b091783966a..0c9cd3e12cf4b 100644
+index 4f6f42f33613..7f40c89c5cb3 100644
 --- a/fs/fat/dir.c
 +++ b/fs/fat/dir.c
-@@ -379,7 +379,8 @@ static int fat_parse_short(struct super_block *sb,
+@@ -381,7 +381,8 @@ static int fat_parse_short(struct super_block *sb,
  		dotoffset = 1;
  	}
  
@@ -29,7 +29,7 @@ index 92b091783966a..0c9cd3e12cf4b 100644
  	/* For an explanation of the special treatment of 0x05 in
  	 * filenames, see msdos_format_name in namei_msdos.c
  	 */
-@@ -511,6 +512,13 @@ int fat_search_long(struct inode *inode, const unsigned char *name,
+@@ -513,6 +514,13 @@ int fat_search_long(struct inode *inode, const unsigned char *name,
  				goto end_of_dir;
  		}
  
@@ -43,7 +43,7 @@ index 92b091783966a..0c9cd3e12cf4b 100644
  		/* Never prepend '.' to hidden files here.
  		 * That is done only for msdos mounts (and only when
  		 * 'dotsOK=yes'); if we are executing here, it is in the
-@@ -524,6 +532,7 @@ int fat_search_long(struct inode *inode, const unsigned char *name,
+@@ -526,6 +534,7 @@ int fat_search_long(struct inode *inode, const unsigned char *name,
  		if (fat_name_match(sbi, name, name_len, bufname, len))
  			goto found;
  
@@ -51,7 +51,7 @@ index 92b091783966a..0c9cd3e12cf4b 100644
  		if (nr_slots) {
  			void *longname = unicode + FAT_MAX_UNI_CHARS;
  			int size = PATH_MAX - FAT_MAX_UNI_SIZE;
-@@ -615,6 +624,8 @@ static int __fat_readdir(struct inode *inode, struct file *file,
+@@ -617,6 +626,8 @@ static int __fat_readdir(struct inode *inode, struct file *file,
  		if (de->attr != ATTR_EXT && IS_FREE(de->name))
  			goto record_end;
  	} else {
@@ -60,7 +60,7 @@ index 92b091783966a..0c9cd3e12cf4b 100644
  		if ((de->attr & ATTR_VOLUME) || IS_FREE(de->name))
  			goto record_end;
  	}
-@@ -969,6 +980,10 @@ int fat_scan(struct inode *dir, const unsigned char *name,
+@@ -972,6 +983,10 @@ int fat_scan(struct inode *dir, const unsigned char *name,
  	sinfo->bh = NULL;
  	while (fat_get_short_entry(dir, &sinfo->slot_off, &sinfo->bh,
  				   &sinfo->de) >= 0) {
@@ -72,7 +72,7 @@ index 92b091783966a..0c9cd3e12cf4b 100644
  			sinfo->slot_off -= sizeof(*sinfo->de);
  			sinfo->nr_slots = 1;
 diff --git a/include/uapi/linux/msdos_fs.h b/include/uapi/linux/msdos_fs.h
-index a5773899f4d91..22794eb8d1a36 100644
+index a5773899f4d9..22794eb8d1a3 100644
 --- a/include/uapi/linux/msdos_fs.h
 +++ b/include/uapi/linux/msdos_fs.h
 @@ -48,6 +48,7 @@
@@ -84,5 +84,5 @@ index a5773899f4d91..22794eb8d1a36 100644
  #define DELETED_FLAG	0xe5	/* marks file as deleted when in name[0] */
  #define IS_FREE(n)	(!*(n) || *(n) == DELETED_FLAG)
 -- 
-2.39.2
+2.43.0
 
