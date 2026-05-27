@@ -8,3 +8,6 @@ patch aufs6-core.patch
 patch aufs-update-inode_update_time-for-v7.0.patch
 patch aufs-rename-is_dot_dotdot-for-v7.0.patch
 patch aufs-convert-S_ATIME-S_VERSION-for-v7.0.patch
+patch fs-aufs-replace-fsparam_path-with-fsparam_string-for.patch
+patch fs-aufs-open-code-lock_rename-helpers-for-v7.1.patch
+patch fs-aufs-drop-d_u-prefix-for-anonymized-dentry-alias-.patch

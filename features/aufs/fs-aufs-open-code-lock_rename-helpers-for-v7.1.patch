@@ -1,0 +1,112 @@
+From cc2a9c7b1e2e1b339146a3665feca83613e624d0 Mon Sep 17 00:00:00 2001
+From: Bruce Ashfield <bruce.ashfield@gmail.com>
+Date: Tue, 26 May 2026 23:05:22 -0400
+Subject: [PATCH 2/3] fs/aufs: open-code lock_rename helpers for v7.1
+
+Upstream commit 4d94ce88c77e ("VFS: unexport lock_rename(),
+lock_rename_child(), unlock_rename()") removed the EXPORT_SYMBOL()
+declarations for these helpers and marked them static in fs/namei.c, on
+the grounds that nothing in-tree calls them outside of namei.c after
+the conversion to the start_renaming() API.
+
+The recommended migration in Documentation/filesystems/porting.rst is
+to use start_renaming() / start_renaming_dentry(), but those operate at
+the lookup-and-lock level and expect a struct renamedata plus qstr
+names. aufs's vfsub_lock_rename() / vfsub_unlock_rename() callers
+already hold resolved dentries and need only the rename-lock half,
+making a switch to the higher-level API a significant rewrite of every
+caller without a behavioural benefit.
+
+Instead, open-code static equivalents (au_lock_rename,
+au_unlock_rename, au_lock_two_directories) inside vfsub.c, mirroring
+the v7.1 in-tree implementations bit-for-bit. The locking semantics
+seen by the rest of aufs are unchanged; only the symbol names differ.
+
+Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
+---
+ fs/aufs/vfsub.c | 56 +++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 54 insertions(+), 2 deletions(-)
+
+diff --git a/fs/aufs/vfsub.c b/fs/aufs/vfsub.c
+index 192def019e69..5fdd529601e7 100644
+--- a/fs/aufs/vfsub.c
++++ b/fs/aufs/vfsub.c
+@@ -263,13 +263,65 @@ void vfsub_call_lkup_one(void *args)
+ 
+ /* ---------------------------------------------------------------------- */
+ 
++/*
++ * v7.1: lock_rename(), lock_rename_child(), unlock_rename() were unexported
++ * (upstream 4d94ce88c77e).  Open-code an equivalent here so aufs can keep
++ * the existing low-level rename-locking semantics without rewriting callers
++ * to the higher-level start_renaming() API.
++ */
++static struct dentry *au_lock_two_directories(struct dentry *p1,
++					      struct dentry *p2)
++{
++	struct dentry *p = p1, *q = p2, *r;
++
++	while ((r = p->d_parent) != p2 && r != p)
++		p = r;
++	if (r == p2) {
++		inode_lock_nested(p2->d_inode, I_MUTEX_PARENT);
++		inode_lock_nested(p1->d_inode, I_MUTEX_PARENT2);
++		return p;
++	}
++	while ((r = q->d_parent) != p1 && r != p && r != q)
++		q = r;
++	if (r == p1) {
++		inode_lock_nested(p1->d_inode, I_MUTEX_PARENT);
++		inode_lock_nested(p2->d_inode, I_MUTEX_PARENT2);
++		return q;
++	} else if (likely(r == p)) {
++		inode_lock_nested(p1->d_inode, I_MUTEX_PARENT);
++		inode_lock_nested(p2->d_inode, I_MUTEX_PARENT2);
++		return NULL;
++	}
++	mutex_unlock(&p1->d_sb->s_vfs_rename_mutex);
++	return ERR_PTR(-EXDEV);
++}
++
++static struct dentry *au_lock_rename(struct dentry *p1, struct dentry *p2)
++{
++	if (p1 == p2) {
++		inode_lock_nested(p1->d_inode, I_MUTEX_PARENT);
++		return NULL;
++	}
++	mutex_lock(&p1->d_sb->s_vfs_rename_mutex);
++	return au_lock_two_directories(p1, p2);
++}
++
++static void au_unlock_rename(struct dentry *p1, struct dentry *p2)
++{
++	inode_unlock(p1->d_inode);
++	if (p1 != p2) {
++		inode_unlock(p2->d_inode);
++		mutex_unlock(&p1->d_sb->s_vfs_rename_mutex);
++	}
++}
++
+ struct dentry *vfsub_lock_rename(struct dentry *d1, struct au_hinode *hdir1,
+ 				 struct dentry *d2, struct au_hinode *hdir2)
+ {
+ 	struct dentry *d;
+ 
+ 	lockdep_off();
+-	d = lock_rename(d1, d2);
++	d = au_lock_rename(d1, d2);
+ 	lockdep_on();
+ 	if (IS_ERR(d))
+ 		goto out;
+@@ -288,7 +340,7 @@ void vfsub_unlock_rename(struct dentry *d1, struct au_hinode *hdir1,
+ 	if (hdir1 != hdir2)
+ 		au_hn_resume(hdir2);
+ 	lockdep_off();
+-	unlock_rename(d1, d2);
++	au_unlock_rename(d1, d2);
+ 	lockdep_on();
+ }
+ 
+-- 
+2.43.0
+

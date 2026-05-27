@@ -1,0 +1,80 @@
+From 20319339d760fcb55c7c17ce139db207e5ae7cd3 Mon Sep 17 00:00:00 2001
+From: Bruce Ashfield <bruce.ashfield@gmail.com>
+Date: Tue, 26 May 2026 23:06:05 -0400
+Subject: [PATCH 3/3] fs/aufs: drop d_u prefix for anonymized dentry alias in
+ v7.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream commit 2420067cecac ("struct dentry: make ->d_u anonymous")
+turned the d_u union in struct dentry into an anonymous union, so its
+members (d_alias, d_in_lookup_hash, d_rcu) are now accessed directly on
+the dentry rather than through a d_u. prefix.
+
+aufs iterates inode->i_dentry alias lists in three places to find
+attached dentries:
+
+ - fs/aufs/debug.c   (au_dpri_dentry dump)
+ - fs/aufs/export.c  (exportfs lookup helper)
+ - fs/aufs/hnotify.c (hn_gen_by_inode regeneration)
+
+All three used hlist_for_each_entry(..., d_u.d_alias). Drop the d_u.
+qualifier so they keep iterating the same hlist, now reached as
+->d_alias directly.
+
+Note: upstream commit 408d8af01f3a added a for_each_alias() helper that
+wraps this iteration with the required i_lock check; that is a cleaner
+target for a future refactor but is not required here — the existing
+hlist_for_each_entry pattern continues to work and matches the rest of
+aufs's locking idioms.
+
+Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
+---
+ fs/aufs/debug.c   | 2 +-
+ fs/aufs/export.c  | 2 +-
+ fs/aufs/hnotify.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/fs/aufs/debug.c b/fs/aufs/debug.c
+index 91cf90baf860..60799089d3ec 100644
+--- a/fs/aufs/debug.c
++++ b/fs/aufs/debug.c
+@@ -173,7 +173,7 @@ void au_dpri_dalias(struct inode *inode)
+ 	struct dentry *d;
+ 
+ 	spin_lock(&inode->i_lock);
+-	hlist_for_each_entry(d, &inode->i_dentry, d_u.d_alias)
++	hlist_for_each_entry(d, &inode->i_dentry, d_alias)
+ 		au_dpri_dentry(d);
+ 	spin_unlock(&inode->i_lock);
+ }
+diff --git a/fs/aufs/export.c b/fs/aufs/export.c
+index 2937c96a9638..ce79187b3039 100644
+--- a/fs/aufs/export.c
++++ b/fs/aufs/export.c
+@@ -242,7 +242,7 @@ static struct dentry *decode_by_ino(struct super_block *sb, ino_t ino,
+ 		dentry = d_find_alias(inode);
+ 	else {
+ 		spin_lock(&inode->i_lock);
+-		hlist_for_each_entry(d, &inode->i_dentry, d_u.d_alias) {
++		hlist_for_each_entry(d, &inode->i_dentry, d_alias) {
+ 			spin_lock(&d->d_lock);
+ 			if (!au_test_anon(d)
+ 			    && d_inode(d->d_parent)->i_ino == dir_ino) {
+diff --git a/fs/aufs/hnotify.c b/fs/aufs/hnotify.c
+index facbc55af937..3cac6d42a1d4 100644
+--- a/fs/aufs/hnotify.c
++++ b/fs/aufs/hnotify.c
+@@ -207,7 +207,7 @@ static int hn_gen_by_inode(char *name, unsigned int nlen, struct inode *inode,
+ 		AuDebugOn(!name);
+ 		au_iigen_dec(inode);
+ 		spin_lock(&inode->i_lock);
+-		hlist_for_each_entry(d, &inode->i_dentry, d_u.d_alias) {
++		hlist_for_each_entry(d, &inode->i_dentry, d_alias) {
+ 			spin_lock(&d->d_lock);
+ 			dname = &d->d_name;
+ 			if (dname->len != nlen
+-- 
+2.43.0
+

@@ -1,0 +1,70 @@
+From 95d8402ed99e95dfccba868d3fd2bef0a126c57e Mon Sep 17 00:00:00 2001
+From: Bruce Ashfield <bruce.ashfield@gmail.com>
+Date: Tue, 26 May 2026 23:05:11 -0400
+Subject: [PATCH 1/3] fs/aufs: replace fsparam_path with fsparam_string for
+ v7.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream commit d2f2f7cf8e89 ("fs: remove fsparam_path /
+fs_param_is_path") removed the fsparam_path() macro and its underlying
+fs_param_is_path handler from include/linux/fs_parser.h and
+fs/fs_parser.c. The rationale given upstream is that no in-tree user
+remained after the fs_context conversion, so the helper was deemed
+unused.
+
+fs_param_is_path() was a stub that simply returned 0 — it acted purely
+as a type marker without affecting parsing. The aufs parameter table in
+fs/aufs/fsctx.c relied on this purely-typed marker for several
+path-valued mount options (append, prepend, del, mod, xino,
+trunc_xino).
+
+fsparam_string() has identical parsing semantics for these options
+(value captured as a string), so substituting it preserves aufs's
+behaviour exactly while restoring the build.
+
+Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
+---
+ fs/aufs/fsctx.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/fs/aufs/fsctx.c b/fs/aufs/fsctx.c
+index 6e10eef1012b..4a1224e5ea16 100644
+--- a/fs/aufs/fsctx.c
++++ b/fs/aufs/fsctx.c
+@@ -358,24 +358,24 @@ const struct fs_parameter_spec aufs_fsctx_paramspec[] = {
+ 	/* "add=%d:%s" or "ins=%d:%s" */
+ 	fsparam_string("add", Opt_add),
+ 	fsparam_string("ins", Opt_add),
+-	fsparam_path("append", Opt_append),
+-	fsparam_path("prepend", Opt_prepend),
++	fsparam_string("append", Opt_append),
++	fsparam_string("prepend", Opt_prepend),
+ 
+-	fsparam_path("del", Opt_del),
++	fsparam_string("del", Opt_del),
+ 	/* fsparam_s32("idel", Opt_idel), */
+-	fsparam_path("mod", Opt_mod),
++	fsparam_string("mod", Opt_mod),
+ 	/* fsparam_string("imod", Opt_imod), */
+ 
+ 	fsparam_s32("dirwh", Opt_dirwh),
+ 
+-	fsparam_path("xino", Opt_xino),
++	fsparam_string("xino", Opt_xino),
+ 	fsparam_flag("noxino", Opt_noxino),
+ 	fsparam_flag_no("trunc_xino", Opt_trunc_xino),
+ 	/* "trunc_xino_v=%d:%d" */
+ 	/* fsparam_string("trunc_xino_v", Opt_trunc_xino_v), */
+-	fsparam_path("trunc_xino", Opt_trunc_xino_path),
++	fsparam_string("trunc_xino", Opt_trunc_xino_path),
+ 	fsparam_s32("itrunc_xino", Opt_itrunc_xino),
+-	/* fsparam_path("zxino", Opt_zxino), */
++	/* fsparam_string("zxino", Opt_zxino), */
+ 	fsparam_flag_no("trunc_xib", Opt_trunc_xib),
+ 
+ #ifdef CONFIG_PROC_FS
+-- 
+2.43.0
+
