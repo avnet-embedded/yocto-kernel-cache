@@ -11,6 +11,7 @@ kconf hardware genericarm64-remoteproc.cfg
 kconf hardware genericarm64-rtc.cfg
 kconf hardware genericarm64-serial.cfg
 kconf hardware genericarm64-sound.cfg
+kconf hardware genericarm64-tee.cfg
 
 include cfg/8250.scc
 include cfg/boot-live.scc
