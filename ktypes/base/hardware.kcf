@@ -70,6 +70,7 @@ arch/arm/mach-tegra/Kconfig
 arch/arm/mach-ux500/Kconfig
 arch/arm/mach-versatile/Kconfig
 arch/arm/mach-vt8500/Kconfig
+arch/arm/mach-zte/Kconfig
 arch/arm/mach-zynq/Kconfig
 arch/arm/mm/Kconfig
 arch/csky/Kconfig
@@ -78,7 +79,6 @@ arch/csky/Kconfig.platforms
 arch/hexagon/Kconfig
 arch/hexagon/Kconfig.debug
 arch/Kconfig
-arch/loongarch/crypto/Kconfig
 arch/loongarch/Kconfig
 arch/loongarch/Kconfig.debug
 arch/loongarch/kvm/Kconfig
@@ -99,7 +99,6 @@ arch/mips/bcm63xx/boards/Kconfig
 arch/mips/bcm63xx/Kconfig
 arch/mips/bmips/Kconfig
 arch/mips/cavium-octeon/Kconfig
-arch/mips/crypto/Kconfig
 arch/mips/econet/Kconfig
 arch/mips/generic/Kconfig
 arch/mips/ingenic/Kconfig
@@ -117,7 +116,6 @@ arch/mips/ralink/Kconfig
 arch/mips/sgi-ip27/Kconfig
 arch/mips/sibyte/Kconfig
 arch/mips/txx9/Kconfig
-arch/mips/vdso/Kconfig
 arch/nios2/Kconfig
 arch/nios2/Kconfig.debug
 arch/nios2/platform/Kconfig.platform
@@ -321,7 +319,6 @@ drivers/crypto/intel/Kconfig
 drivers/crypto/intel/keembay/Kconfig
 drivers/crypto/intel/qat/Kconfig
 drivers/crypto/Kconfig
-drivers/crypto/loongson/Kconfig
 drivers/crypto/marvell/Kconfig
 drivers/crypto/nx/Kconfig
 drivers/crypto/starfive/Kconfig
@@ -646,6 +643,7 @@ drivers/media/dvb-frontends/drx39xyj/Kconfig
 drivers/media/dvb-frontends/Kconfig
 drivers/media/firewire/Kconfig
 drivers/media/i2c/ccs/Kconfig
+drivers/media/i2c/cvs/Kconfig
 drivers/media/i2c/cx25840/Kconfig
 drivers/media/i2c/et8ek8/Kconfig
 drivers/media/i2c/Kconfig
@@ -663,6 +661,7 @@ drivers/media/pci/cx88/Kconfig
 drivers/media/pci/ddbridge/Kconfig
 drivers/media/pci/dm1105/Kconfig
 drivers/media/pci/dt3155/Kconfig
+drivers/media/pci/hws/Kconfig
 drivers/media/pci/intel/ipu3/Kconfig
 drivers/media/pci/intel/ipu6/Kconfig
 drivers/media/pci/intel/ivsc/Kconfig
@@ -687,6 +686,8 @@ drivers/media/pci/tw686x/Kconfig
 drivers/media/pci/tw68/Kconfig
 drivers/media/pci/zoran/Kconfig
 drivers/media/platform/allegro-dvt/Kconfig
+drivers/media/platform/amd/isp4/Kconfig
+drivers/media/platform/amd/Kconfig
 drivers/media/platform/amlogic/c3/isp/Kconfig
 drivers/media/platform/amlogic/c3/Kconfig
 drivers/media/platform/amlogic/c3/mipi-adapter/Kconfig
@@ -883,6 +884,7 @@ drivers/net/dsa/lantiq/Kconfig
 drivers/net/dsa/microchip/Kconfig
 drivers/net/dsa/mv88e6xxx/Kconfig
 drivers/net/dsa/mxl862xx/Kconfig
+drivers/net/dsa/netc/Kconfig
 drivers/net/dsa/ocelot/Kconfig
 drivers/net/dsa/qca/Kconfig
 drivers/net/dsa/realtek/Kconfig
@@ -897,6 +899,7 @@ drivers/net/ethernet/aeroflex/Kconfig
 drivers/net/ethernet/agere/Kconfig
 drivers/net/ethernet/airoha/Kconfig
 drivers/net/ethernet/alacritech/Kconfig
+drivers/net/ethernet/alibaba/Kconfig
 drivers/net/ethernet/allwinner/Kconfig
 drivers/net/ethernet/altera/Kconfig
 drivers/net/ethernet/amazon/Kconfig
@@ -1162,6 +1165,7 @@ drivers/perf/Kconfig
 drivers/phy/allwinner/Kconfig
 drivers/phy/amlogic/Kconfig
 drivers/phy/apple/Kconfig
+drivers/phy/axiado/Kconfig
 drivers/phy/broadcom/Kconfig
 drivers/phy/cadence/Kconfig
 drivers/phy/canaan/Kconfig
@@ -1194,6 +1198,7 @@ drivers/phy/tegra/Kconfig
 drivers/phy/ti/Kconfig
 drivers/phy/xilinx/Kconfig
 drivers/pinctrl/actions/Kconfig
+drivers/pinctrl/airoha/Kconfig
 drivers/pinctrl/aspeed/Kconfig
 drivers/pinctrl/bcm/Kconfig
 drivers/pinctrl/bcm/Kconfig.stb
@@ -1227,6 +1232,7 @@ drivers/pinctrl/sunplus/Kconfig
 drivers/pinctrl/sunxi/Kconfig
 drivers/pinctrl/tegra/Kconfig
 drivers/pinctrl/ti/Kconfig
+drivers/pinctrl/ultrarisc/Kconfig
 drivers/pinctrl/uniphier/Kconfig
 drivers/pinctrl/visconti/Kconfig
 drivers/pinctrl/vt8500/Kconfig
@@ -1408,7 +1414,6 @@ drivers/staging/Kconfig
 drivers/staging/media/atomisp/i2c/Kconfig
 drivers/staging/media/atomisp/Kconfig
 drivers/staging/media/av7110/Kconfig
-drivers/staging/media/deprecated/atmel/Kconfig
 drivers/staging/media/imx/Kconfig
 drivers/staging/media/ipu3/Kconfig
 drivers/staging/media/ipu7/Kconfig
@@ -1450,6 +1455,7 @@ drivers/thermal/mediatek/Kconfig
 drivers/thermal/qcom/Kconfig
 drivers/thermal/renesas/Kconfig
 drivers/thermal/samsung/Kconfig
+drivers/thermal/spacemit/Kconfig
 drivers/thermal/st/Kconfig
 drivers/thermal/tegra/Kconfig
 drivers/thermal/ti-soc-thermal/Kconfig
@@ -1540,6 +1546,7 @@ drivers/virt/coco/Kconfig
 drivers/virt/coco/pkvm-guest/Kconfig
 drivers/virt/coco/sev-guest/Kconfig
 drivers/virt/coco/tdx-guest/Kconfig
+drivers/virt/coco/tdx-host/Kconfig
 drivers/virtio/Kconfig
 drivers/virt/Kconfig
 drivers/virt/nitro_enclaves/Kconfig

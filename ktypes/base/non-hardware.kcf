@@ -97,7 +97,6 @@ drivers/staging/Kconfig
 drivers/staging/media/atomisp/i2c/Kconfig
 drivers/staging/media/atomisp/Kconfig
 drivers/staging/media/av7110/Kconfig
-drivers/staging/media/deprecated/atmel/Kconfig
 drivers/staging/media/imx/Kconfig
 drivers/staging/media/ipu3/Kconfig
 drivers/staging/media/ipu7/Kconfig
@@ -156,6 +155,7 @@ drivers/virt/coco/Kconfig
 drivers/virt/coco/pkvm-guest/Kconfig
 drivers/virt/coco/sev-guest/Kconfig
 drivers/virt/coco/tdx-guest/Kconfig
+drivers/virt/coco/tdx-host/Kconfig
 drivers/virtio/Kconfig
 drivers/virt/Kconfig
 drivers/virt/nitro_enclaves/Kconfig
@@ -165,6 +165,7 @@ fs/9p/Kconfig
 fs/adfs/Kconfig
 fs/affs/Kconfig
 fs/afs/Kconfig
+fs/aufs/Kconfig
 fs/autofs/Kconfig
 fs/befs/Kconfig
 fs/bfs/Kconfig
@@ -234,6 +235,7 @@ fs/unicode/Kconfig
 fs/vboxsf/Kconfig
 fs/verity/Kconfig
 fs/xfs/Kconfig
+fs/yaffs2/Kconfig
 fs/zonefs/Kconfig
 init/Kconfig
 io_uring/Kconfig
@@ -294,7 +296,6 @@ net/6lowpan/Kconfig
 net/8021q/Kconfig
 net/802/Kconfig
 net/9p/Kconfig
-net/appletalk/Kconfig
 net/atm/Kconfig
 net/batman-adv/Kconfig
 net/bluetooth/bnep/Kconfig
