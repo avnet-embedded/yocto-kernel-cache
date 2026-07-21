@@ -1,26 +1,26 @@
-From bd12822e534ebccd4b5b8f7d3d86a9fe4dfd5b1e Mon Sep 17 00:00:00 2001
+From abb70448844c0b38c15c5d5e79760da76e25c058 Mon Sep 17 00:00:00 2001
 From: Tom Zanussi <tom.zanussi@intel.com>
-Date: Tue, 3 Jul 2012 13:07:23 -0500
+Date: Tue, 21 Jul 2026 11:35:11 -0400
 Subject: [PATCH] perf: change --root to --prefix for python install
 
 Otherwise we get the sysroot path appended to the build path, not what
 we want.
 
-Signed-off-by: Tom Zanussi <tom.zanussi@intel.com>
+Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
 ---
  tools/perf/Makefile.perf | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tools/perf/Makefile.perf b/tools/perf/Makefile.perf
-index 76b35ac19acb..a63f7c0a3a10 100644
+index 476b8dcaef58..38caef699f4e 100644
 --- a/tools/perf/Makefile.perf
 +++ b/tools/perf/Makefile.perf
-@@ -1158,7 +1158,7 @@ install-bin: install-tools install-tests
+@@ -897,7 +897,7 @@ install-bin: install-tools install-tests
  install: install-bin try-install-man
  
  install-python_ext:
--	$(PYTHON_WORD) util/setup.py --quiet install --root='/$(DESTDIR_SQ)'
-+	$(PYTHON_WORD) util/setup.py --quiet install --prefix='$(DESTDIR_SQ)/usr'
+-	$(PYTHON_WORD) util/setup.py $(python_setup_quiet) install --root='/$(DESTDIR_SQ)'
++	$(PYTHON_WORD) util/setup.py $(python_setup_quiet) install --prefix='$(DESTDIR_SQ)/usr'
  
  # 'make install-doc' should call 'make -C Documentation install'
  $(INSTALL_DOC_TARGETS):
