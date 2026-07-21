@@ -1,4 +1,4 @@
-From 77fb8aa8f700ce90d2e2a86343922a197f0b281d Mon Sep 17 00:00:00 2001
+From 4285b68ca86f0f14149e71ebcbe56f4e3440f15f Mon Sep 17 00:00:00 2001
 From: Jim Somerville <Jim.Somerville@windriver.com>
 Date: Thu, 8 Apr 2010 23:44:22 -0700
 Subject: [PATCH] nfs: Allow default io size to be configured.
@@ -14,7 +14,7 @@ Signed-off-by: Jim Somerville <Jim.Somerville@windriver.com>
  2 files changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/fs/nfs/Kconfig b/fs/nfs/Kconfig
-index 07932ce9246c1..34e6f9468fcd3 100644
+index 6bb30543eff0..3b3c4a10e566 100644
 --- a/fs/nfs/Kconfig
 +++ b/fs/nfs/Kconfig
 @@ -42,6 +42,19 @@ config NFS_V2
@@ -38,7 +38,7 @@ index 07932ce9246c1..34e6f9468fcd3 100644
  	tristate "NFS client support for NFS version 3"
  	depends on NFS_FS
 diff --git a/include/linux/nfs_xdr.h b/include/linux/nfs_xdr.h
-index 31463286402fd..8e2758617c980 100644
+index 11c5b31cfc7d..751378755d02 100644
 --- a/include/linux/nfs_xdr.h
 +++ b/include/linux/nfs_xdr.h
 @@ -12,7 +12,7 @@
@@ -51,5 +51,5 @@ index 31463286402fd..8e2758617c980 100644
  
  #define NFS_BITMASK_SZ		3
 -- 
-2.39.2
+2.43.0
 

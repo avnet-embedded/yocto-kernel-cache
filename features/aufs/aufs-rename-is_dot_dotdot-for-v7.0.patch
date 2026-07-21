@@ -1,4 +1,4 @@
-From d7ad4463b053c061b3c7ccfa66c126e2f7ac8895 Mon Sep 17 00:00:00 2001
+From bde21930c26e5e21561ea1f560439cf14add60b2 Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@gmail.com>
 Date: Wed, 18 Mar 2026 10:33:08 -0400
 Subject: [PATCH] fs/aufs: rename is_dot_dotdot to name_is_dot_dotdot for v7.0

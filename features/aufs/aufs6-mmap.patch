@@ -1,4 +1,4 @@
-From d80b741e1ad5f9bdd5d3bd10c5863015a4893141 Mon Sep 17 00:00:00 2001
+From 5b86a9e75af29c013eed6edb774fa6e61e1c8516 Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@gmail.com>
 Date: Sun, 25 Jan 2026 16:29:21 -0500
 Subject: [PATCH] aufs6: mmap
@@ -15,7 +15,7 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
  create mode 100644 fs/au_mf.c
 
 diff --git a/fs/Makefile b/fs/Makefile
-index 17446f026275..b6bb74577091 100644
+index 371d438fdf57..cba1e536022d 100644
 --- a/fs/Makefile
 +++ b/fs/Makefile
 @@ -17,6 +17,9 @@ obj-y :=	open.o read_write.o file_table.o super.o \
@@ -95,12 +95,12 @@ index 000000000000..bacf13696a77
 +}
 +EXPORT_SYMBOL_GPL(au_file_user_inode);
 diff --git a/fs/proc/base.c b/fs/proc/base.c
-index d9acfa89c894..295bc14a2970 100644
+index 780f81259052..21801bd15373 100644
 --- a/fs/proc/base.c
 +++ b/fs/proc/base.c
-@@ -1788,7 +1788,7 @@ static int proc_exe_link(struct dentry *dentry, struct path *exe_path)
+@@ -1765,7 +1765,7 @@ static int proc_exe_link(struct dentry *dentry, struct path *exe_path,
+ 
  	exe_file = get_task_exe_file(task);
- 	put_task_struct(task);
  	if (exe_file) {
 -		*exe_path = exe_file->f_path;
 +		*exe_path = *file_user_path(exe_file);
@@ -134,10 +134,10 @@ index d362919f4f68..79a2590d40f4 100644
  		ino = inode->i_ino;
  		pgoff = (loff_t)vma->vm_pgoff << PAGE_SHIFT;
 diff --git a/include/linux/fs.h b/include/linux/fs.h
-index 391dfb0ca771..f00a7f9efa82 100644
+index 84a7d43b779d..f475d5f6e07b 100644
 --- a/include/linux/fs.h
 +++ b/include/linux/fs.h
-@@ -2491,6 +2491,21 @@ static inline void backing_file_set_security(struct file *f, void *security)
+@@ -2502,6 +2502,21 @@ static inline void backing_file_set_security(struct file *f, void *security)
  }
  #endif /* CONFIG_SECURITY */
  
@@ -159,7 +159,7 @@ index 391dfb0ca771..f00a7f9efa82 100644
  /*
   * When mmapping a file on a stackable filesystem (e.g., overlayfs), the file
   * stored in ->vm_file is a backing file whose f_inode is on the underlying
-@@ -2503,15 +2518,25 @@ static inline void backing_file_set_security(struct file *f, void *security)
+@@ -2514,15 +2529,25 @@ static inline void backing_file_set_security(struct file *f, void *security)
  /* Get the path to display in /proc/<pid>/maps */
  static inline const struct path *file_user_path(const struct file *f)
  {

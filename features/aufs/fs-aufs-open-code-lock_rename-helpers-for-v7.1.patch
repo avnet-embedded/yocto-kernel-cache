@@ -1,7 +1,7 @@
-From cc2a9c7b1e2e1b339146a3665feca83613e624d0 Mon Sep 17 00:00:00 2001
+From 619ac366107319675b2f0b983483c2f4706d96f2 Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@gmail.com>
 Date: Tue, 26 May 2026 23:05:22 -0400
-Subject: [PATCH 2/3] fs/aufs: open-code lock_rename helpers for v7.1
+Subject: [PATCH] fs/aufs: open-code lock_rename helpers for v7.1
 
 Upstream commit 4d94ce88c77e ("VFS: unexport lock_rename(),
 lock_rename_child(), unlock_rename()") removed the EXPORT_SYMBOL()

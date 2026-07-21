@@ -1,4 +1,4 @@
-From 6b1d52d9b2304b2942b77b8e4d46e860dbba2072 Mon Sep 17 00:00:00 2001
+From ad111ae07137f519016bf1e4d57da17be23a8622 Mon Sep 17 00:00:00 2001
 From: Trevor Woerner <twoerner@gmail.com>
 Date: Tue, 16 Sep 2025 16:33:24 +0100
 Subject: [PATCH] defconfig: cleanup orphaned CONFIG_SCHED_DEBUG
@@ -77,10 +77,10 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
  65 files changed, 65 deletions(-)
 
 diff --git a/arch/arc/configs/axs101_defconfig b/arch/arc/configs/axs101_defconfig
-index f930396d9dae..9c9243f94edc 100644
+index 870e5291b7db..f1e452dd2c75 100644
 --- a/arch/arc/configs/axs101_defconfig
 +++ b/arch/arc/configs/axs101_defconfig
-@@ -100,6 +100,5 @@ CONFIG_NLS_ISO8859_1=y
+@@ -99,6 +99,5 @@ CONFIG_NLS_ISO8859_1=y
  CONFIG_STRIP_ASM_SYMS=y
  CONFIG_SOFTLOCKUP_DETECTOR=y
  CONFIG_DEFAULT_HUNG_TASK_TIMEOUT=10
@@ -88,10 +88,10 @@ index f930396d9dae..9c9243f94edc 100644
  # CONFIG_DEBUG_PREEMPT is not set
  # CONFIG_FTRACE is not set
 diff --git a/arch/arc/configs/axs103_defconfig b/arch/arc/configs/axs103_defconfig
-index 6b779dee5ea0..3c255028722d 100644
+index d45e4d335998..855047c0870a 100644
 --- a/arch/arc/configs/axs103_defconfig
 +++ b/arch/arc/configs/axs103_defconfig
-@@ -98,6 +98,5 @@ CONFIG_NLS_ISO8859_1=y
+@@ -97,6 +97,5 @@ CONFIG_NLS_ISO8859_1=y
  CONFIG_STRIP_ASM_SYMS=y
  CONFIG_SOFTLOCKUP_DETECTOR=y
  CONFIG_DEFAULT_HUNG_TASK_TIMEOUT=10
@@ -99,10 +99,10 @@ index 6b779dee5ea0..3c255028722d 100644
  # CONFIG_DEBUG_PREEMPT is not set
  # CONFIG_FTRACE is not set
 diff --git a/arch/arc/configs/axs103_smp_defconfig b/arch/arc/configs/axs103_smp_defconfig
-index a89b50d5369d..37b02d66da8e 100644
+index f986c0205f13..05b47b05156d 100644
 --- a/arch/arc/configs/axs103_smp_defconfig
 +++ b/arch/arc/configs/axs103_smp_defconfig
-@@ -100,6 +100,5 @@ CONFIG_NLS_ISO8859_1=y
+@@ -99,6 +99,5 @@ CONFIG_NLS_ISO8859_1=y
  CONFIG_STRIP_ASM_SYMS=y
  CONFIG_SOFTLOCKUP_DETECTOR=y
  CONFIG_DEFAULT_HUNG_TASK_TIMEOUT=10
@@ -168,10 +168,10 @@ index ec558e57d081..d9d8585dba22 100644
  CONFIG_DEBUG_USER=y
  # CONFIG_RUNTIME_TESTING_MENU is not set
 diff --git a/arch/arm/configs/at91_dt_defconfig b/arch/arm/configs/at91_dt_defconfig
-index 4f1153098b16..ac82d00dc334 100644
+index e331242dece7..1117bb99927d 100644
 --- a/arch/arm/configs/at91_dt_defconfig
 +++ b/arch/arm/configs/at91_dt_defconfig
-@@ -239,6 +239,5 @@ CONFIG_FONT_MINI_4x6=y
+@@ -238,6 +238,5 @@ CONFIG_FONT_MINI_4x6=y
  # CONFIG_DEBUG_BUGVERBOSE is not set
  CONFIG_STRIP_ASM_SYMS=y
  CONFIG_DEBUG_FS=y
@@ -179,10 +179,10 @@ index 4f1153098b16..ac82d00dc334 100644
  # CONFIG_FTRACE is not set
  CONFIG_DEBUG_USER=y
 diff --git a/arch/arm/configs/axm55xx_defconfig b/arch/arm/configs/axm55xx_defconfig
-index 22b189090e15..fe06d57fd222 100644
+index 0952e5e94c5e..f055a29cef06 100644
 --- a/arch/arm/configs/axm55xx_defconfig
 +++ b/arch/arm/configs/axm55xx_defconfig
-@@ -226,7 +226,6 @@ CONFIG_PRINTK_TIME=y
+@@ -225,7 +225,6 @@ CONFIG_PRINTK_TIME=y
  CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  CONFIG_DEBUG_FS=y
  CONFIG_MAGIC_SYSRQ=y
@@ -191,10 +191,10 @@ index 22b189090e15..fe06d57fd222 100644
  # CONFIG_FTRACE is not set
  CONFIG_DEBUG_USER=y
 diff --git a/arch/arm/configs/dove_defconfig b/arch/arm/configs/dove_defconfig
-index e98c35df675e..c5fb9b7ce735 100644
+index b6ed01216a62..b5f0026394d9 100644
 --- a/arch/arm/configs/dove_defconfig
 +++ b/arch/arm/configs/dove_defconfig
-@@ -132,5 +132,4 @@ CONFIG_PRINTK_TIME=y
+@@ -130,5 +130,4 @@ CONFIG_PRINTK_TIME=y
  CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
@@ -246,10 +246,10 @@ index e995e50537ef..839082405c4f 100644
 -# CONFIG_SCHED_DEBUG is not set
  CONFIG_MEMTEST=y
 diff --git a/arch/arm/configs/multi_v5_defconfig b/arch/arm/configs/multi_v5_defconfig
-index 59b020e66a0b..bff0c9684a67 100644
+index d237ea8ea327..fe67ee6fe251 100644
 --- a/arch/arm/configs/multi_v5_defconfig
 +++ b/arch/arm/configs/multi_v5_defconfig
-@@ -292,7 +292,6 @@ CONFIG_DEBUG_KERNEL=y
+@@ -290,7 +290,6 @@ CONFIG_DEBUG_KERNEL=y
  CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
@@ -258,10 +258,10 @@ index 59b020e66a0b..bff0c9684a67 100644
  # CONFIG_FTRACE is not set
  CONFIG_DEBUG_USER=y
 diff --git a/arch/arm/configs/mvebu_v5_defconfig b/arch/arm/configs/mvebu_v5_defconfig
-index d1742a7cae6a..659c3e8cac0a 100644
+index 781f8f72df5f..c45aa8cfce7e 100644
 --- a/arch/arm/configs/mvebu_v5_defconfig
 +++ b/arch/arm/configs/mvebu_v5_defconfig
-@@ -191,7 +191,6 @@ CONFIG_DEBUG_KERNEL=y
+@@ -189,7 +189,6 @@ CONFIG_DEBUG_KERNEL=y
  CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
@@ -302,10 +302,10 @@ index fb272e3a2337..2f3b8265e452 100644
  CONFIG_DEBUG_SPINLOCK_SLEEP=y
  # CONFIG_FTRACE is not set
 diff --git a/arch/arm/configs/qcom_defconfig b/arch/arm/configs/qcom_defconfig
-index 29a1dea500f0..9d877f9d1c09 100644
+index 03309b89ea4c..29aa7b196e4e 100644
 --- a/arch/arm/configs/qcom_defconfig
 +++ b/arch/arm/configs/qcom_defconfig
-@@ -320,4 +320,3 @@ CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
+@@ -305,4 +305,3 @@ CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
  # CONFIG_SLUB_DEBUG is not set
@@ -322,10 +322,10 @@ index febea5cf7aaa..203e5f5ebd23 100644
  # CONFIG_FTRACE is not set
  CONFIG_DEBUG_USER=y
 diff --git a/arch/arm/configs/sama5_defconfig b/arch/arm/configs/sama5_defconfig
-index 2cad045e1d8d..1b3a8527a321 100644
+index bd7f0b5f7d66..d625806828b7 100644
 --- a/arch/arm/configs/sama5_defconfig
 +++ b/arch/arm/configs/sama5_defconfig
-@@ -250,6 +250,5 @@ CONFIG_CRYPTO_DEV_ATMEL_SHA=y
+@@ -249,6 +249,5 @@ CONFIG_CRYPTO_DEV_ATMEL_SHA=y
  CONFIG_STRIP_ASM_SYMS=y
  CONFIG_DEBUG_FS=y
  CONFIG_DEBUG_MEMORY_INIT=y
@@ -333,10 +333,10 @@ index 2cad045e1d8d..1b3a8527a321 100644
  # CONFIG_FTRACE is not set
  CONFIG_DEBUG_USER=y
 diff --git a/arch/arm/configs/sama7_defconfig b/arch/arm/configs/sama7_defconfig
-index e52f671ccec4..cb2b6a47d4b7 100644
+index cc7f6daf9fc7..875548e0d7d0 100644
 --- a/arch/arm/configs/sama7_defconfig
 +++ b/arch/arm/configs/sama7_defconfig
-@@ -243,7 +243,6 @@ CONFIG_CMA_ALIGNMENT=9
+@@ -244,7 +244,6 @@ CONFIG_CMA_ALIGNMENT=9
  # CONFIG_DEBUG_MISC is not set
  # CONFIG_SECTION_MISMATCH_WARN_ONLY is not set
  CONFIG_DEBUG_FS=y
@@ -345,10 +345,10 @@ index e52f671ccec4..cb2b6a47d4b7 100644
  # CONFIG_FTRACE is not set
  CONFIG_DEBUG_USER=y
 diff --git a/arch/arm/configs/socfpga_defconfig b/arch/arm/configs/socfpga_defconfig
-index f2e42846b116..1e0911a3dd8a 100644
+index 19a8e30a7b22..98425e3a6287 100644
 --- a/arch/arm/configs/socfpga_defconfig
 +++ b/arch/arm/configs/socfpga_defconfig
-@@ -157,6 +157,5 @@ CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
+@@ -156,6 +156,5 @@ CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
  CONFIG_DETECT_HUNG_TASK=y
@@ -368,10 +368,10 @@ index 2fe25f5eb9a5..7ca4e00b4d68 100644
  CONFIG_DEBUG_USER=y
  CONFIG_CORESIGHT=y
 diff --git a/arch/arm/configs/wpcm450_defconfig b/arch/arm/configs/wpcm450_defconfig
-index cd4b3e70ff68..5c4e462720aa 100644
+index 67b64a378166..a05c59d8a613 100644
 --- a/arch/arm/configs/wpcm450_defconfig
 +++ b/arch/arm/configs/wpcm450_defconfig
-@@ -195,7 +195,6 @@ CONFIG_PRINTK_TIME=y
+@@ -194,7 +194,6 @@ CONFIG_PRINTK_TIME=y
  CONFIG_DEBUG_KERNEL=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
@@ -380,10 +380,10 @@ index cd4b3e70ff68..5c4e462720aa 100644
  # CONFIG_FTRACE is not set
  CONFIG_IO_STRICT_DEVMEM=y
 diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index f715b7806ac4..a776cd7048cf 100644
+index 818b5962facb..e6f04d0635ab 100644
 --- a/arch/arm64/configs/defconfig
 +++ b/arch/arm64/configs/defconfig
-@@ -1970,7 +1970,6 @@ CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
+@@ -1956,7 +1956,6 @@ CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  CONFIG_DEBUG_INFO_REDUCED=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
@@ -401,10 +401,10 @@ index 83b7626550c8..6c8bd14fbcd4 100644
  CONFIG_DEBUG_FS=y
 -# CONFIG_SCHED_DEBUG is not set
 diff --git a/arch/loongarch/configs/loongson32_defconfig b/arch/loongarch/configs/loongson32_defconfig
-index d5ef396dffe3..7264591b9dcf 100644
+index 7c8f01513ed2..3e1d480c1218 100644
 --- a/arch/loongarch/configs/loongson32_defconfig
 +++ b/arch/loongarch/configs/loongson32_defconfig
-@@ -1098,7 +1098,6 @@ CONFIG_PRINTK_TIME=y
+@@ -1094,7 +1094,6 @@ CONFIG_PRINTK_TIME=y
  CONFIG_STRIP_ASM_SYMS=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
@@ -413,10 +413,10 @@ index d5ef396dffe3..7264591b9dcf 100644
  # CONFIG_DEBUG_PREEMPT is not set
  # CONFIG_FTRACE is not set
 diff --git a/arch/loongarch/configs/loongson64_defconfig b/arch/loongarch/configs/loongson64_defconfig
-index cba4cdff5acd..41236bba319d 100644
+index 8e3906d3bd70..f858628e694c 100644
 --- a/arch/loongarch/configs/loongson64_defconfig
 +++ b/arch/loongarch/configs/loongson64_defconfig
-@@ -1132,7 +1132,6 @@ CONFIG_PRINTK_TIME=y
+@@ -1128,7 +1128,6 @@ CONFIG_PRINTK_TIME=y
  CONFIG_STRIP_ASM_SYMS=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
@@ -466,7 +466,7 @@ index 90536cab417e..f8ddcd059243 100644
  # CONFIG_FTRACE is not set
  CONFIG_CMDLINE_BOOL=y
 diff --git a/arch/mips/configs/cu1000-neo_defconfig b/arch/mips/configs/cu1000-neo_defconfig
-index 19517beaf540..3e3e5827c4a1 100644
+index ed2a620e4f86..2d10c1d9ec2d 100644
 --- a/arch/mips/configs/cu1000-neo_defconfig
 +++ b/arch/mips/configs/cu1000-neo_defconfig
 @@ -118,7 +118,6 @@ CONFIG_MAGIC_SYSRQ=y
@@ -478,7 +478,7 @@ index 19517beaf540..3e3e5827c4a1 100644
  CONFIG_STACKTRACE=y
  # CONFIG_FTRACE is not set
 diff --git a/arch/mips/configs/cu1830-neo_defconfig b/arch/mips/configs/cu1830-neo_defconfig
-index b403e67ab105..84dfe018d9e9 100644
+index 9b4aeeef58ce..c64c99c6c223 100644
 --- a/arch/mips/configs/cu1830-neo_defconfig
 +++ b/arch/mips/configs/cu1830-neo_defconfig
 @@ -121,7 +121,6 @@ CONFIG_MAGIC_SYSRQ=y
@@ -571,10 +571,10 @@ index f1c53bbb72e9..553f6cf056fd 100644
  # CONFIG_FTRACE is not set
  CONFIG_CMDLINE_BOOL=y
 diff --git a/arch/parisc/configs/generic-64bit_defconfig b/arch/parisc/configs/generic-64bit_defconfig
-index 0c4d54df9cf0..ec14a13452d9 100644
+index 406f8174a1d2..8ff64534ed1a 100644
 --- a/arch/parisc/configs/generic-64bit_defconfig
 +++ b/arch/parisc/configs/generic-64bit_defconfig
-@@ -294,4 +294,3 @@ CONFIG_STRIP_ASM_SYMS=y
+@@ -292,4 +292,3 @@ CONFIG_STRIP_ASM_SYMS=y
  CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_FS=y
  CONFIG_DEBUG_STACKOVERFLOW=y
@@ -590,7 +590,7 @@ index 5757625469c4..00fc9f1e87f0 100644
 -# CONFIG_SCHED_DEBUG is not set
  # CONFIG_DEBUG_BUGVERBOSE is not set
 diff --git a/arch/powerpc/configs/ep8248e_defconfig b/arch/powerpc/configs/ep8248e_defconfig
-index 0d8d3f41f194..8dcc37b00496 100644
+index c3167726706d..b17d8ca841a6 100644
 --- a/arch/powerpc/configs/ep8248e_defconfig
 +++ b/arch/powerpc/configs/ep8248e_defconfig
 @@ -60,7 +60,6 @@ CONFIG_NLS_ISO8859_1=y
@@ -614,7 +614,7 @@ index 271daff47d1d..be87926f4120 100644
  CONFIG_XMON=y
  CONFIG_XMON_DEFAULT=y
 diff --git a/arch/powerpc/configs/mgcoge_defconfig b/arch/powerpc/configs/mgcoge_defconfig
-index f65001e7877f..981f2cbf8b90 100644
+index a31e1184f912..bde749f0e001 100644
 --- a/arch/powerpc/configs/mgcoge_defconfig
 +++ b/arch/powerpc/configs/mgcoge_defconfig
 @@ -75,7 +75,6 @@ CONFIG_NLS_UTF8=y
@@ -624,7 +624,7 @@ index f65001e7877f..981f2cbf8b90 100644
 -# CONFIG_SCHED_DEBUG is not set
  CONFIG_BDI_SWITCH=y
  CONFIG_CRYPTO_ECB=y
- CONFIG_CRYPTO_PCBC=y
+ # CONFIG_CRYPTO_HW is not set
 diff --git a/arch/powerpc/configs/microwatt_defconfig b/arch/powerpc/configs/microwatt_defconfig
 index d81989a6f59b..cf10d896b451 100644
 --- a/arch/powerpc/configs/microwatt_defconfig
@@ -710,7 +710,7 @@ index 57ac7af157b8..3898310c83b3 100644
  CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  CONFIG_SH_STANDARD_BIOS=y
 diff --git a/arch/sh/configs/sh2007_defconfig b/arch/sh/configs/sh2007_defconfig
-index 5d9080499485..0afc029f7e1c 100644
+index 3060bcd9cc5f..b8fec753e7cd 100644
 --- a/arch/sh/configs/sh2007_defconfig
 +++ b/arch/sh/configs/sh2007_defconfig
 @@ -157,7 +157,6 @@ CONFIG_NLS_UTF8=y
@@ -734,7 +734,7 @@ index 93066ae429ec..c4a6621d59b9 100644
  CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y
  # CONFIG_FTRACE is not set
 diff --git a/arch/sparc/configs/sparc32_defconfig b/arch/sparc/configs/sparc32_defconfig
-index 48d834acafb4..4fc4c1508a2b 100644
+index d5579217fb4c..9f6508c166cc 100644
 --- a/arch/sparc/configs/sparc32_defconfig
 +++ b/arch/sparc/configs/sparc32_defconfig
 @@ -75,7 +75,6 @@ CONFIG_RPCSEC_GSS_KRB5=m
@@ -746,10 +746,10 @@ index 48d834acafb4..4fc4c1508a2b 100644
  CONFIG_KGDB_TESTS=y
  CONFIG_CRYPTO_NULL=m
 diff --git a/arch/sparc/configs/sparc64_defconfig b/arch/sparc/configs/sparc64_defconfig
-index 632081a262ba..976b35edfa7c 100644
+index 34a6a31e6e14..36a67566fa8e 100644
 --- a/arch/sparc/configs/sparc64_defconfig
 +++ b/arch/sparc/configs/sparc64_defconfig
-@@ -198,7 +198,6 @@ CONFIG_MAGIC_SYSRQ=y
+@@ -196,7 +196,6 @@ CONFIG_MAGIC_SYSRQ=y
  CONFIG_DEBUG_KERNEL=y
  CONFIG_LOCKUP_DETECTOR=y
  CONFIG_DETECT_HUNG_TASK=y

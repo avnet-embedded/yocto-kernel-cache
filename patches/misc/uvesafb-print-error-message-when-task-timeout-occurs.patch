@@ -1,4 +1,4 @@
-From cd70b7816e2d0d75a91e4d81af0364db655dc563 Mon Sep 17 00:00:00 2001
+From f65dbce92622bd17f0c510a85c2f0ae5f7f6f8e6 Mon Sep 17 00:00:00 2001
 From: Jianxun Zhang <jianxun.zhang@linux.intel.com>
 Date: Thu, 14 Apr 2016 15:26:21 -0700
 Subject: [PATCH] uvesafb: print error message when task timeout occurs
@@ -16,7 +16,7 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@windriver.com>
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/video/fbdev/uvesafb.c b/drivers/video/fbdev/uvesafb.c
-index 88667fccc27b..838f393a609b 100644
+index 9d82326c744f..43e6e7d240c7 100644
 --- a/drivers/video/fbdev/uvesafb.c
 +++ b/drivers/video/fbdev/uvesafb.c
 @@ -213,9 +213,13 @@ static int uvesafb_exec(struct uvesafb_ktask *task)

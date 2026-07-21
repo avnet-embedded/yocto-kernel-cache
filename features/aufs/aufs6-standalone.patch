@@ -1,4 +1,4 @@
-From e929ebfdc42fa45e46e8bf650eeed9021bb1a6f0 Mon Sep 17 00:00:00 2001
+From 563323ab4013bc585932c0ff918a74ae44b63a6b Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@gmail.com>
 Date: Sun, 25 Jan 2026 16:29:48 -0500
 Subject: [PATCH] aufs6: standalone
@@ -22,10 +22,10 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
  14 files changed, 25 insertions(+)
 
 diff --git a/fs/dcache.c b/fs/dcache.c
-index d1e354fb80ea..b7c50cb67bc7 100644
+index 4902da33762c..4decb7eea728 100644
 --- a/fs/dcache.c
 +++ b/fs/dcache.c
-@@ -1469,6 +1469,7 @@ void d_walk(struct dentry *parent, void *data,
+@@ -1539,6 +1539,7 @@ void d_walk(struct dentry *parent, void *data,
  	seq = 1;
  	goto again;
  }
@@ -34,10 +34,10 @@ index d1e354fb80ea..b7c50cb67bc7 100644
  struct check_mount {
  	struct vfsmount *mnt;
 diff --git a/fs/exec.c b/fs/exec.c
-index ba12b4c466f6..6a95c0f004e2 100644
+index d5993cedc829..a9fa38594812 100644
 --- a/fs/exec.c
 +++ b/fs/exec.c
-@@ -120,6 +120,7 @@ bool path_noexec(const struct path *path)
+@@ -121,6 +121,7 @@ bool path_noexec(const struct path *path)
  	return (path->mnt->mnt_flags & MNT_NOEXEC) ||
  	       (path->mnt->mnt_sb->s_iflags & SB_I_NOEXEC);
  }
@@ -46,7 +46,7 @@ index ba12b4c466f6..6a95c0f004e2 100644
  #ifdef CONFIG_MMU
  /*
 diff --git a/fs/fcntl.c b/fs/fcntl.c
-index c9e5300ff82b..92255e819fb0 100644
+index 30aadd42ed8e..78db19b2a4f5 100644
 --- a/fs/fcntl.c
 +++ b/fs/fcntl.c
 @@ -89,6 +89,7 @@ int setfl(int fd, struct file * filp, unsigned int arg)
@@ -58,7 +58,7 @@ index c9e5300ff82b..92255e819fb0 100644
  /*
   * Allocate an file->f_owner struct if it doesn't exist, handling racing
 diff --git a/fs/file_table.c b/fs/file_table.c
-index 16e52e7fc2ac..2446dc5dc2df 100644
+index c68b8c0a4097..5367fd8ad12d 100644
 --- a/fs/file_table.c
 +++ b/fs/file_table.c
 @@ -281,6 +281,7 @@ struct file *alloc_empty_file(int flags, const struct cred *cred)
@@ -70,10 +70,10 @@ index 16e52e7fc2ac..2446dc5dc2df 100644
  /*
   * Variant of alloc_empty_file() that doesn't check and modify nr_files.
 diff --git a/fs/namespace.c b/fs/namespace.c
-index da4ef4cda146..3954b47dfae2 100644
+index 9f7a9b6a8788..bd2fd70d5c0d 100644
 --- a/fs/namespace.c
 +++ b/fs/namespace.c
-@@ -953,6 +953,7 @@ int is_current_mnt_ns(struct vfsmount *mnt)
+@@ -954,6 +954,7 @@ int is_current_mnt_ns(struct vfsmount *mnt)
  {
  	return check_mnt(real_mount(mnt));
  }
@@ -81,7 +81,7 @@ index da4ef4cda146..3954b47dfae2 100644
  
  static inline bool check_anonymous_mnt(struct mount *mnt)
  {
-@@ -2284,6 +2285,7 @@ const struct path *collect_paths(const struct path *path,
+@@ -2289,6 +2290,7 @@ const struct path *collect_paths(const struct path *path,
  		path_get(p);
  	return res;
  }
@@ -89,7 +89,7 @@ index da4ef4cda146..3954b47dfae2 100644
  
  void drop_collected_paths(const struct path *paths, const struct path *prealloc)
  {
-@@ -2292,6 +2294,7 @@ void drop_collected_paths(const struct path *paths, const struct path *prealloc)
+@@ -2297,6 +2299,7 @@ void drop_collected_paths(const struct path *paths, const struct path *prealloc)
  	if (paths != prealloc)
  		kfree(paths);
  }
@@ -98,10 +98,10 @@ index da4ef4cda146..3954b47dfae2 100644
  static struct mnt_namespace *alloc_mnt_ns(struct user_namespace *, bool);
  
 diff --git a/fs/notify/fsnotify.c b/fs/notify/fsnotify.c
-index 2dac70b99b0d..b07e83693061 100644
+index 7e2f330fd283..147a6cf28fd0 100644
 --- a/fs/notify/fsnotify.c
 +++ b/fs/notify/fsnotify.c
-@@ -169,6 +169,7 @@ int fsnotify_pre_content(const struct path *path, const loff_t *ppos,
+@@ -172,6 +172,7 @@ int fsnotify_pre_content(const struct path *path, const loff_t *ppos,
  	return fsnotify_parent(path->dentry, FS_PRE_ACCESS, &range,
  			       FSNOTIFY_EVENT_FILE_RANGE);
  }
@@ -122,7 +122,7 @@ index b56d1c1d9644..9e2d893a3371 100644
  /*
   * Drop a reference to a group.  Free it if it's through.
 diff --git a/fs/open.c b/fs/open.c
-index 681d405bc61e..ec66395154fc 100644
+index 408925d7bd0b..00da1ac2bae0 100644
 --- a/fs/open.c
 +++ b/fs/open.c
 @@ -69,6 +69,7 @@ int do_truncate(struct mnt_idmap *idmap, struct dentry *dentry,
@@ -134,7 +134,7 @@ index 681d405bc61e..ec66395154fc 100644
  int vfs_truncate(const struct path *path, loff_t length)
  {
 diff --git a/fs/read_write.c b/fs/read_write.c
-index 50bff7edc91f..ab1128eaffd4 100644
+index e8c14e2760b2..31e7ab73aecc 100644
 --- a/fs/read_write.c
 +++ b/fs/read_write.c
 @@ -581,6 +581,7 @@ ssize_t vfs_read(struct file *file, char __user *buf, size_t count, loff_t *pos)
@@ -145,7 +145,7 @@ index 50bff7edc91f..ab1128eaffd4 100644
  
  static ssize_t new_sync_write(struct file *filp, const char __user *buf, size_t len, loff_t *ppos)
  {
-@@ -696,6 +697,7 @@ ssize_t vfs_write(struct file *file, const char __user *buf, size_t count, loff_
+@@ -695,6 +696,7 @@ ssize_t vfs_write(struct file *file, const char __user *buf, size_t count, loff_
  	file_end_write(file);
  	return ret;
  }
@@ -166,10 +166,10 @@ index d2b70cb432d1..81deb01e8ec0 100644
  /*
   * Indicate to the caller that there was a premature EOF when reading from the
 diff --git a/fs/xattr.c b/fs/xattr.c
-index 09ecbaaa1660..4eb3a474304a 100644
+index d58979115200..66a1a1346120 100644
 --- a/fs/xattr.c
 +++ b/fs/xattr.c
-@@ -423,6 +423,7 @@ vfs_getxattr_alloc(struct mnt_idmap *idmap, struct dentry *dentry,
+@@ -428,6 +428,7 @@ vfs_getxattr_alloc(struct mnt_idmap *idmap, struct dentry *dentry,
  	*xattr_value = value;
  	return error;
  }
@@ -199,7 +199,7 @@ index 0f7519f8e7c9..96c8ae627018 100644
  }
 +EXPORT_SYMBOL_GPL(task_work_run);
 diff --git a/security/security.c b/security/security.c
-index 4e999f023651..8fd4da7c5576 100644
+index 71aea8fdf014..19bc738a4593 100644
 --- a/security/security.c
 +++ b/security/security.c
 @@ -1431,6 +1431,7 @@ void security_path_post_mknod(struct mnt_idmap *idmap, struct dentry *dentry)

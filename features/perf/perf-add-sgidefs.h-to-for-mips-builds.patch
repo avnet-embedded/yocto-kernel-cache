@@ -1,4 +1,4 @@
-From 99523ac778fa0f4946dd5c07a2742806a1247ea7 Mon Sep 17 00:00:00 2001
+From e6c6bebed3c2cb4a55e8c523af87b4ac9bfa649a Mon Sep 17 00:00:00 2001
 From: Tom Zanussi <tom.zanussi@intel.com>
 Date: Tue, 10 Jul 2012 09:37:56 -0500
 Subject: [PATCH] perf: add sgidefs.h to for mips builds
@@ -28,7 +28,7 @@ index c19f44610983..73a75176a9db 100644
  #include "../../../util/config.h"
  #include "../../../util/trace-event.h"
 diff --git a/tools/perf/util/scripting-engines/trace-event-python.c b/tools/perf/util/scripting-engines/trace-event-python.c
-index 5a30caaec73e..0e8f043ecc6c 100644
+index 8f832ae316ca..9296213a18e0 100644
 --- a/tools/perf/util/scripting-engines/trace-event-python.c
 +++ b/tools/perf/util/scripting-engines/trace-event-python.c
 @@ -19,6 +19,10 @@

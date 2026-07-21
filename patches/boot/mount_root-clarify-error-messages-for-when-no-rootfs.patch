@@ -1,4 +1,4 @@
-From f370b3fc0cc219693c0da914a2db7e95ad65d688 Mon Sep 17 00:00:00 2001
+From 839cc6c631cf30a607e112a6463c547a76dc5597 Mon Sep 17 00:00:00 2001
 From: Paul Gortmaker <paul.gortmaker@windriver.com>
 Date: Thu, 26 Nov 2009 07:32:09 -0800
 Subject: [PATCH] mount_root: clarify error messages for when no rootfs found
@@ -25,10 +25,10 @@ Signed-off-by: Darren Hart <dvhart@linux.intel.com>
  1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/init/do_mounts.c b/init/do_mounts.c
-index 6af29da8889eb..6c37a4072ce09 100644
+index 95e0b3a0f711..aa67c572e4c3 100644
 --- a/init/do_mounts.c
 +++ b/init/do_mounts.c
-@@ -233,7 +233,9 @@ void __init mount_root_generic(char *name, char *pretty_name, int flags)
+@@ -226,7 +226,9 @@ void __init mount_root_generic(char *name, char *pretty_name, int flags)
  			pr_err("\n");
  		}
  
@@ -39,7 +39,7 @@ index 6af29da8889eb..6c37a4072ce09 100644
  	}
  	if (!(flags & SB_RDONLY)) {
  		flags |= SB_RDONLY;
-@@ -246,7 +248,9 @@ void __init mount_root_generic(char *name, char *pretty_name, int flags)
+@@ -239,7 +241,9 @@ void __init mount_root_generic(char *name, char *pretty_name, int flags)
  	for (i = 0, p = fs_names; i < num_fs; i++, p += strlen(p)+1)
  		printk(" %s", p);
  	printk("\n");
@@ -48,8 +48,8 @@ index 6af29da8889eb..6c37a4072ce09 100644
 +	printk(KERN_EMERG "User configuration error - no valid root filesystem found\n");
 +	panic("Invalid configuration from end user prevents continuing");
  out:
- 	put_page(page);
+ 	kfree(fs_names);
  }
 -- 
-2.39.2
+2.43.0
 

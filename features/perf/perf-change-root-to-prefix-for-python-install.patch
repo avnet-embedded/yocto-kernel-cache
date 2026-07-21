@@ -1,4 +1,4 @@
-From abb70448844c0b38c15c5d5e79760da76e25c058 Mon Sep 17 00:00:00 2001
+From 5f39335c9ed17ea051b730dfc1cc203bd28ca3f8 Mon Sep 17 00:00:00 2001
 From: Tom Zanussi <tom.zanussi@intel.com>
 Date: Tue, 21 Jul 2026 11:35:11 -0400
 Subject: [PATCH] perf: change --root to --prefix for python install

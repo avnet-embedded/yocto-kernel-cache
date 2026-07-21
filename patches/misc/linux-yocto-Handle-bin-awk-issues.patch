@@ -1,4 +1,4 @@
-From 744da4e73ab704ec8f790d6058f998267a4dad42 Mon Sep 17 00:00:00 2001
+From 667668c7596000e60a55f218f7a5da6f526143af Mon Sep 17 00:00:00 2001
 From: Richard Purdie <richard.purdie@linuxfoundation.org>
 Date: Tue, 22 Aug 2017 09:50:50 +0100
 Subject: [PATCH] linux-yocto: Handle /bin/awk issues

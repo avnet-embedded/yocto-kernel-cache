@@ -1,4 +1,4 @@
-From 186c0cef62e92dbb598ae98e16d6ac2b90bccdd0 Mon Sep 17 00:00:00 2001
+From f21c54b4c2243c7683405aa8e568a0ca2f55d0fa Mon Sep 17 00:00:00 2001
 From: Bruce Ashfield <bruce.ashfield@gmail.com>
 Date: Sun, 25 Jan 2026 16:28:58 -0500
 Subject: [PATCH] aufs6: base
@@ -19,10 +19,10 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@gmail.com>
  11 files changed, 59 insertions(+), 4 deletions(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index b539be153f6a..421b1195c91e 100644
+index a674e36529f7..40c17bc4308a 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -4259,6 +4259,19 @@ S:	Supported
+@@ -4339,6 +4339,19 @@ S:	Supported
  F:	Documentation/dev-tools/autofdo.rst
  F:	scripts/Makefile.autofdo
  
@@ -43,10 +43,10 @@ index b539be153f6a..421b1195c91e 100644
  M:	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  M:	"Rafael J. Wysocki" <rafael@kernel.org>
 diff --git a/drivers/block/loop.c b/drivers/block/loop.c
-index 0000913f7efc..e7dadac7dd17 100644
+index 1faecef33009..48fdbf4d46a9 100644
 --- a/drivers/block/loop.c
 +++ b/drivers/block/loop.c
-@@ -630,6 +630,26 @@ static int loop_change_fd(struct loop_device *lo, struct block_device *bdev,
+@@ -626,6 +626,26 @@ static int loop_change_fd(struct loop_device *lo, struct block_device *bdev,
  	goto done;
  }
  
@@ -74,10 +74,10 @@ index 0000913f7efc..e7dadac7dd17 100644
  
  static ssize_t loop_attr_show(struct device *dev, char *page,
 diff --git a/fs/dcache.c b/fs/dcache.c
-index 2c61aeea41f4..d1e354fb80ea 100644
+index 3e9af9de7074..4902da33762c 100644
 --- a/fs/dcache.c
 +++ b/fs/dcache.c
-@@ -1359,6 +1359,9 @@ enum d_walk_ret {
+@@ -1429,6 +1429,9 @@ enum d_walk_ret {
  	D_WALK_SKIP,
  };
  
@@ -87,7 +87,7 @@ index 2c61aeea41f4..d1e354fb80ea 100644
  /**
   * d_walk - walk the dentry tree
   * @parent:	start of walk
-@@ -1367,7 +1370,7 @@ enum d_walk_ret {
+@@ -1437,7 +1440,7 @@ enum d_walk_ret {
   *
   * The @enter() callbacks are called with d_lock held.
   */
@@ -97,7 +97,7 @@ index 2c61aeea41f4..d1e354fb80ea 100644
  {
  	struct dentry *this_parent, *dentry;
 diff --git a/fs/fcntl.c b/fs/fcntl.c
-index beab8080badf..c9e5300ff82b 100644
+index c158f082f1da..30aadd42ed8e 100644
 --- a/fs/fcntl.c
 +++ b/fs/fcntl.c
 @@ -36,7 +36,7 @@
@@ -119,10 +119,10 @@ index beab8080badf..c9e5300ff82b 100644
  		return error;
  
 diff --git a/fs/namespace.c b/fs/namespace.c
-index fe919abd2f01..da4ef4cda146 100644
+index 3d5cd5bf3b05..9f7a9b6a8788 100644
 --- a/fs/namespace.c
 +++ b/fs/namespace.c
-@@ -948,6 +948,12 @@ static inline int check_mnt(const struct mount *mnt)
+@@ -949,6 +949,12 @@ static inline int check_mnt(const struct mount *mnt)
  	return mnt->mnt_ns == current->nsproxy->mnt_ns;
  }
  
@@ -149,10 +149,10 @@ index 9d8f63e2fd1a..d2b70cb432d1 100644
  {
  	if (unlikely(!out->f_op->splice_write))
 diff --git a/include/linux/fs.h b/include/linux/fs.h
-index 11559c513dfb..391dfb0ca771 100644
+index 50ce731a2b78..84a7d43b779d 100644
 --- a/include/linux/fs.h
 +++ b/include/linux/fs.h
-@@ -1390,6 +1390,7 @@ extern void fasync_free(struct fasync_struct *);
+@@ -1385,6 +1385,7 @@ extern void fasync_free(struct fasync_struct *);
  /* can be called from interrupts */
  extern void kill_fasync(struct fasync_struct **, int, int);
  
@@ -160,7 +160,7 @@ index 11559c513dfb..391dfb0ca771 100644
  extern void __f_setown(struct file *filp, struct pid *, enum pid_type, int force);
  extern int f_setown(struct file *filp, int who, int force);
  extern void f_delown(struct file *filp);
-@@ -1946,6 +1947,7 @@ struct file_operations {
+@@ -1941,6 +1942,7 @@ struct file_operations {
  	int (*lock) (struct file *, int, struct file_lock *);
  	unsigned long (*get_unmapped_area)(struct file *, unsigned long, unsigned long, unsigned long, unsigned long);
  	int (*check_flags)(int);

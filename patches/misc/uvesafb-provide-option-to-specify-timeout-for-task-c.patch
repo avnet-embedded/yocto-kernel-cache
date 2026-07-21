@@ -1,4 +1,4 @@
-From a67e1ae4bf3570e93f8d8fe33b1830de058c1b72 Mon Sep 17 00:00:00 2001
+From 0a9d75d87924f7ac9d5065255f3aeb62d5534de2 Mon Sep 17 00:00:00 2001
 From: Jianxun Zhang <jianxun.zhang@linux.intel.com>
 Date: Thu, 25 Aug 2016 15:30:55 -0700
 Subject: [PATCH] uvesafb: provide option to specify timeout for task
@@ -28,18 +28,18 @@ Signed-off-by: Bruce Ashfield <bruce.ashfield@windriver.com>
  2 files changed, 25 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/video/fbdev/uvesafb.c b/drivers/video/fbdev/uvesafb.c
-index 13bbb61a9d8f..bd26813c7562 100644
+index 43e6e7d240c7..6bde3d99b3a3 100644
 --- a/drivers/video/fbdev/uvesafb.c
 +++ b/drivers/video/fbdev/uvesafb.c
-@@ -40,6 +40,7 @@ static struct fb_fix_screeninfo uvesafb_fix = {
+@@ -44,6 +44,7 @@ static const struct fb_fix_screeninfo uvesafb_fix = {
  	.visual = FB_VISUAL_TRUECOLOR,
  };
  
 +static int task_timeout = UVESAFB_TIMEOUT; /* timeout [ms] of task execution */
  static int mtrr		= 3;	/* enable mtrr by default */
- static bool blank	= 1;	/* enable blanking by default */
+ static bool blank	= true;	/* enable blanking by default */
  static int ypan		= 1;	/* 0: scroll, 1: ypan, 2: ywrap */
-@@ -143,7 +144,9 @@ static int uvesafb_exec(struct uvesafb_ktask *task)
+@@ -147,7 +148,9 @@ static int uvesafb_exec(struct uvesafb_ktask *task)
  	struct cn_msg *m;
  	int err;
  	int len = sizeof(task->t) + task->t.buf_len;
@@ -50,7 +50,7 @@ index 13bbb61a9d8f..bd26813c7562 100644
  	/*
  	 * Check whether the message isn't longer than the maximum
  	 * allowed by connector.
-@@ -212,11 +215,19 @@ static int uvesafb_exec(struct uvesafb_ktask *task)
+@@ -214,11 +217,19 @@ static int uvesafb_exec(struct uvesafb_ktask *task)
  		err = 0;
  
  	if (!err && !(task->t.flags & TF_EXIT)) {
@@ -75,7 +75,7 @@ index 13bbb61a9d8f..bd26813c7562 100644
  	}
  
  	mutex_lock(&uvfb_lock);
-@@ -1840,6 +1851,8 @@ static int uvesafb_setup(char *options)
+@@ -1814,6 +1825,8 @@ static int uvesafb_setup(char *options)
  	while ((this_opt = strsep(&options, ",")) != NULL) {
  		if (!*this_opt) continue;
  
@@ -84,7 +84,7 @@ index 13bbb61a9d8f..bd26813c7562 100644
  		if (!strcmp(this_opt, "redraw"))
  			ypan = 0;
  		else if (!strcmp(this_opt, "ypan"))
-@@ -1986,6 +1999,9 @@ static const struct kernel_param_ops param_ops_scroll = {
+@@ -1957,6 +1970,9 @@ static const struct kernel_param_ops param_ops_scroll = {
  };
  #define param_check_scroll(name, p) __param_check(name, p, void)
  
@@ -95,10 +95,10 @@ index 13bbb61a9d8f..bd26813c7562 100644
  MODULE_PARM_DESC(scroll,
  	"Scrolling mode, set to 'redraw', 'ypan', or 'ywrap'");
 diff --git a/include/video/uvesafb.h b/include/video/uvesafb.h
-index 30f53625415c..bfd1982e8185 100644
+index 47d96e75e8ef..295e3b14bfe7 100644
 --- a/include/video/uvesafb.h
 +++ b/include/video/uvesafb.h
-@@ -88,7 +88,9 @@ struct vbe_mode_ib {
+@@ -89,7 +89,9 @@ struct vbe_mode_ib {
  
  #define UVESAFB_DEFAULT_MODE "640x480-16"
  
@@ -110,5 +110,5 @@ index 30f53625415c..bfd1982e8185 100644
  
  /* Max number of concurrent tasks */
 -- 
-2.5.0
+2.43.0
 
